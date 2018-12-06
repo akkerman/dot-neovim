@@ -22,3 +22,8 @@ tags
 [._]*.un~
 
 # End of https://www.gitignore.io/api/vim
+
+# vim-plug, autoloaded with a function
+autoload/plug.vim
+# directory where vim-plug installes
+plugged
