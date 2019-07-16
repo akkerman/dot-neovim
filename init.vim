@@ -18,6 +18,8 @@ Plug 'morhetz/gruvbox'
 " opening and finding files
 Plug 'junegunn/fzf.vim'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 " }}}
 
