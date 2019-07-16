@@ -25,3 +25,10 @@ call plug#end()
 
 set background=dark
 color gruvbox
+
+
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#status()}\ %P
+
+
+nmap <silent> <F2> <Plug>(coc-diagnostic-next)
+nmap <silent> <F3> <Plug>(coc-diagnostic-prev)
