@@ -32,3 +32,6 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#statu
 
 nmap <silent> <F2> <Plug>(coc-diagnostic-next)
 nmap <silent> <F3> <Plug>(coc-diagnostic-prev)
+
+
+set listchars=tab:»·,trail:·
