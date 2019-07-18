@@ -20,6 +20,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 " }}}
