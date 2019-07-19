@@ -12,6 +12,8 @@ Plug 'tpope/vim-surround'      " ys,cs,ds - add,change,del surround
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-abolish'       " Case insensitive substitute
 
+Plug 'christoomey/vim-tmux-navigator'
+
 " colors
 Plug 'morhetz/gruvbox'
 
