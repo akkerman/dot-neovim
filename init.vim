@@ -18,9 +18,11 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'morhetz/gruvbox'
 
 " opening and finding files
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 " }}}
