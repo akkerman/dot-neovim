@@ -1,7 +1,7 @@
 "
 " vim: set fdm=marker fcs=fold\:\ :
 "
-call functions#PlugLoad() " {{{
+call functions#PlugLoad()
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'    " gc adds comments
@@ -25,7 +25,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mxw/vim-jsx'
 
 call plug#end()
-" }}}
 
 set background=dark
 color gruvbox
