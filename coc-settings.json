@@ -1,4 +1,5 @@
 {
+    "javascript.suggest.enabled": false,
     "eslint.enable": true,
     "eslint.autoFixOnSave": true
 }
