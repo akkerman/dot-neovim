@@ -24,6 +24,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mxw/vim-jsx'
 
+Plug 'chr4/nginx.vim'
+
 call plug#end()
 
 set background=dark
