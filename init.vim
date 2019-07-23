@@ -22,9 +22,12 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mxw/vim-jsx'
 
 Plug 'chr4/nginx.vim'
+
+" javascript
+Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
 
 call plug#end()
 
