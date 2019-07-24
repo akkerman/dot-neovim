@@ -43,3 +43,5 @@ nmap <silent> <F3> <Plug>(coc-diagnostic-prev)
 
 
 set listchars=tab:»·,trail:·
+
+nnoremap <leader>n :set hlsearch!<cr>
