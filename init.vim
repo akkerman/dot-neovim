@@ -25,6 +25,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'chr4/nginx.vim'
 
+Plug 'godlygeek/tabular'
+
 " javascript
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
