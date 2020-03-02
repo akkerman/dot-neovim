@@ -11,6 +11,9 @@ Plug 'tpope/vim-repeat'        " enable repeat for supported plugins
 Plug 'tpope/vim-surround'      " ys,cs,ds - add,change,del surround
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-abolish'       " Case insensitive substitute
+Plug 'tpope/vim-unimpaired'
+
+Plug 'cespare/vim-toml'
 
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -38,6 +41,12 @@ set background=dark
 color gruvbox
 
 
+if executable('ack')
+  set grepprg=ack\ --nogroup\ --column\ "$*"
+  set grepformat=%f:%l:%c:%m
+  cnoreabbrev ack grep
+endif
+
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#status()}\ %P
 
 
@@ -50,15 +59,15 @@ set listchars=tab:»·,trail:·
 nnoremap <leader>n :set hlsearch!<cr>
 
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-let g:coc_snippet_next = '<tab>'
+" let g:coc_snippet_next = '<tab>'
