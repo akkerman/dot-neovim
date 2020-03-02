@@ -7,3 +7,5 @@ setlocal shiftwidth=2
 setlocal expandtab
 
 setlocal makeprg=yarn\ lint\ --format\ compact
+
+autocmd BufReadPost,BufNewFile *.test.js set syntax=jasmine
