@@ -17,6 +17,10 @@ Plug 'cespare/vim-toml'
 
 Plug 'christoomey/vim-tmux-navigator'
 
+" file explorer
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
+
 " colors
 Plug 'morhetz/gruvbox'
 Plug 'akkerman/vim-jasmine'
@@ -54,4 +58,18 @@ set listchars=tab:»·,trail:·
 
 nnoremap <leader>n :set hlsearch!<cr>
 
-" CocInstall coc-snippets
+
+
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+" Open files located in the same dir as the current file
+nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
+
+" CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest
