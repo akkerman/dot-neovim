@@ -12,6 +12,7 @@ Plug 'tpope/vim-surround'      " ys,cs,ds - add,change,del surround
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-abolish'       " Case insensitive substitute
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-obsession'
 
 Plug 'cespare/vim-toml'
 
@@ -39,6 +40,7 @@ Plug 'godlygeek/tabular'
 " javascript
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
@@ -72,4 +74,6 @@ nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 " Open files located in the same dir as the current file
 nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
 
+set mouse=n
+set nowrap
 " CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest
