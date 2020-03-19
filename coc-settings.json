@@ -1,7 +1,8 @@
 {
-    "javascript.suggest.enabled": false,
     "eslint.enable": true,
     "eslint.autoFixOnSave": true,
+    "javascript.showUnused": true,
+    "javascript.suggestionActions.enabled": false,
     "snippets.extends": {
         "javascriptreact": ["javascript"]
     }
