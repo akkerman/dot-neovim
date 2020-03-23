@@ -12,3 +12,6 @@ iabbrev discipilne discipline
 
 " coding snippets
 iabbrev edl // eslint-disable-line
+iabbrev reqf require('../__test__/fixtures
+iabbrev reqf2 require('../../__test__/fixtures
+iabbrev reqf3 require('../../../__test__/fixtures

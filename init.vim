@@ -36,6 +36,7 @@ Plug 'honza/vim-snippets'
 Plug 'chr4/nginx.vim'
 
 Plug 'godlygeek/tabular'
+Plug 'gcmt/taboo.vim'
 
 " javascript
 Plug 'mxw/vim-jsx'
@@ -73,6 +74,8 @@ nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 
 " Open files located in the same dir as the current file
 nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
+
+set sessionoptions+=tabpages,globals
 
 set mouse=n
 set nowrap
