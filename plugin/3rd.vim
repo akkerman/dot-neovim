@@ -12,10 +12,14 @@ nnoremap <silent> <leader>gw :Gwrite<CR>
 " java and groovy result in loss of spelling feature
 let g:markdown_fenced_languages = ["yaml","sh", "javascript", "html", "xml", "json"]  
 
-" honza/vim-snippets {{{
+" honza/vim-snippets {{{1
 " javascript 
 let g:ultisnips_javascript = {
      \ 'keyword-spacing': 'always',
      \ 'semi': 'never',
      \ 'space-before-function-paren': 'never',
      \ }
+
+
+" gcmt/taboo.vim {{{1
+nnoremap <leader>tr :TabooRename 
