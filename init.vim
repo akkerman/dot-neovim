@@ -79,4 +79,9 @@ set sessionoptions+=tabpages,globals
 
 set mouse=n
 set nowrap
+
+" swapfiles and undo
+set directory=~/.cache/nvim/swap//
+set undodir=~/.cache/nvim/undo//
+set undofile
 " CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest
