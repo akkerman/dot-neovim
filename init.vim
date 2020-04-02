@@ -53,6 +53,10 @@ if executable('ack')
   set grepprg=ack\ --nogroup\ --column\ "$*"
   set grepformat=%f:%l:%c:%m
   cnoreabbrev ack grep
+  command! -bang -nargs=* Ack
+  \ call fzf#vim#grep(
+  \   'ack --nogroup --column --color '.<q-args>, 1,
+  \   fzf#vim#with_preview(), <bang>0)
 endif
 
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#status()}\ %P
