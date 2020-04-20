@@ -3,7 +3,7 @@
 " vim: set fdm=marker fcs=fold\:\ :
 
 " tpope/vim-fugitive {{{1
-nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gs :Git<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gw :Gwrite<CR>
 

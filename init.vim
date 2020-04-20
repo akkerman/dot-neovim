@@ -14,6 +14,8 @@ Plug 'tpope/vim-abolish'       " Case insensitive substitute
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 
+Plug 'rbong/vim-flog'           " additional stuff for git (graph/log)
+
 Plug 'cespare/vim-toml'
 
 Plug 'christoomey/vim-tmux-navigator'
