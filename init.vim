@@ -15,6 +15,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 
 Plug 'rbong/vim-flog'           " additional stuff for git (graph/log)
+Plug 'wellle/targets.vim'       " additional text objects 
 
 Plug 'cespare/vim-toml'
 
