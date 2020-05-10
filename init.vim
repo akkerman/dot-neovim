@@ -13,6 +13,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-abolish'       " Case insensitive substitute
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-cucumber'
 
 Plug 'rbong/vim-flog'           " additional stuff for git (graph/log)
 Plug 'wellle/targets.vim'       " additional text objects 
