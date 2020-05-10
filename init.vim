@@ -6,7 +6,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'    " gc adds comments
 Plug 'tpope/vim-fugitive'      " for git commands and branch in statusbar
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'        " enable repeat for supported plugins
 Plug 'tpope/vim-surround'      " ys,cs,ds - add,change,del surround
 Plug 'tpope/vim-projectionist'
@@ -21,6 +20,10 @@ Plug 'wellle/targets.vim'       " additional text objects
 Plug 'cespare/vim-toml'
 
 Plug 'christoomey/vim-tmux-navigator'
+
+" markdown
+Plug 'tpope/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " file explorer
 Plug 'rbgrouleff/bclose.vim'
@@ -93,3 +96,22 @@ set directory=~/.cache/nvim/swap//
 set undodir=~/.cache/nvim/undo//
 set undofile
 " CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest
+
+function! MoveOrCreateWindow(key) abort
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+
+" Move to a split or create one
+nnoremap <silent> <Space>mh :call MoveOrCreateWindow('h')<CR>
+nnoremap <silent> <Space>mj :call MoveOrCreateWindow('j')<CR>
+nnoremap <silent> <Space>mk :call MoveOrCreateWindow('k')<CR>
+nnoremap <silent> <Space>ml :call MoveOrCreateWindow('l')<CR>
