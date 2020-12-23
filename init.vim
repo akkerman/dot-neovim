@@ -60,6 +60,7 @@ if executable('ack')
   set grepprg=ack\ --nogroup\ --column\ "$*"
   set grepformat=%f:%l:%c:%m
   cnoreabbrev ack grep
+  cnoreabbrev ackjs grep --js --notestjs
   command! -bang -nargs=* Ack
   \ call fzf#vim#grep(
   \   'ack --nogroup --column --color '.<q-args>, 1,
@@ -115,3 +116,8 @@ nnoremap <silent> <Space>mh :call MoveOrCreateWindow('h')<CR>
 nnoremap <silent> <Space>mj :call MoveOrCreateWindow('j')<CR>
 nnoremap <silent> <Space>mk :call MoveOrCreateWindow('k')<CR>
 nnoremap <silent> <Space>ml :call MoveOrCreateWindow('l')<CR>
+
+
+let &colorcolumn="80,".join(range(120,999),",")
+
+set cursorline
