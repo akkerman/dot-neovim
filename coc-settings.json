@@ -1,9 +1,12 @@
 {
-    "eslint.enable": true,
-    "eslint.autoFixOnSave": true,
-    "javascript.showUnused": true,
-    "javascript.suggestionActions.enabled": false,
-    "snippets.extends": {
-        "javascriptreact": ["javascript"]
-    }
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "javascript.showUnused": true,
+  "javascript.suggestionActions.enabled": false,
+  "python.venvPath": "~/.virtualenvs",
+  "snippets.extends": {
+    "javascriptreact": [
+      "javascript"
+    ]
+  }
 }
