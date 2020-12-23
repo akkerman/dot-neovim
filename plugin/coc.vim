@@ -158,3 +158,8 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+
+
+
+nnoremap <leader>r :CocRestart<cr>

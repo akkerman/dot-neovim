@@ -13,8 +13,8 @@ nnoremap <silent> <leader>gw :Gwrite<CR>
 let g:markdown_fenced_languages = ["yaml","sh", "javascript", "html", "xml", "json", "cucumber"]
 
 " iamcco/markdown-preview.nvim {{{1
-let g:mkdp_browser = 'surftab'
-let g:mkdp_auto_start = 1
+" let g:mkdp_browser = 'surftab'
+" let g:mkdp_auto_start = 1
 " honza/vim-snippets {{{1
 " javascript 
 let g:ultisnips_javascript = {

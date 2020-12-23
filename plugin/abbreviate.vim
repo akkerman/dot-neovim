@@ -9,6 +9,7 @@ iabbrev Discipilnes Disciplines
 iabbrev discipilnes disciplines
 iabbrev Discipilne Discipline
 iabbrev discipilne discipline
+iabbrev discipine discipline
 
 " coding snippets
 iabbrev edl // eslint-disable-line
