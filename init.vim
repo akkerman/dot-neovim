@@ -30,7 +30,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 
 " colors
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'akkerman/vim-jasmine'
 
 " opening and finding files
