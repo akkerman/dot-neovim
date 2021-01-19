@@ -121,3 +121,6 @@ nnoremap <silent> <Space>ml :call MoveOrCreateWindow('l')<CR>
 let &colorcolumn="80,".join(range(120,999),",")
 
 set cursorline
+
+set ignorecase
+set smartcase
