@@ -124,3 +124,10 @@ set cursorline
 
 set ignorecase
 set smartcase
+
+if has('autocmd')
+    augroup ViewsourceAuto
+        autocmd!
+        autocmd VimResized * execute "normal! \<c-w>="
+    augroup END
+endif
