@@ -131,3 +131,5 @@ if has('autocmd')
         autocmd VimResized * execute "normal! \<c-w>="
     augroup END
 endif
+
+nnoremap <leader>wt :$tab split<CR>
