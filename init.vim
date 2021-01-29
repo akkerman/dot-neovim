@@ -132,4 +132,8 @@ if has('autocmd')
     augroup END
 endif
 
+
+" 'copy' window to tabpage instead of moving
 nnoremap <leader>wt :$tab split<CR>
+nnoremap <c-w><c-t> :tab split<CR>
+nnoremap <c-w>t :tab split<CR>
