@@ -137,3 +137,6 @@ endif
 nnoremap <leader>wt :$tab split<CR>
 nnoremap <c-w><c-t> :tab split<CR>
 nnoremap <c-w>t :tab split<CR>
+
+let g:netrw_banner=0
+let g:netrw_liststyle=3 "Tree style
