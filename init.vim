@@ -23,7 +23,9 @@ Plug 'wellle/targets.vim'       " additional text objects
 
 Plug 'cespare/vim-toml'
 
+" tmux
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux'
 
 " markdown
 " Plug 'tpope/vim-markdown'
