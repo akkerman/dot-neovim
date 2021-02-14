@@ -20,6 +20,7 @@ nnoremap <c-W><c-a> :AV<CR>
 " iamcco/markdown-preview.nvim {{{1
 let g:mkdp_browser = 'surf'
 " let g:mkdp_auto_start = 1
+
 " honza/vim-snippets {{{1
 " javascript 
 let g:ultisnips_javascript = {
@@ -44,3 +45,13 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" mhinz/vim-startify {{{1
+
+let g:startify_custom_header = [] " disable childish header
+
+let g:startify_session_autoload = 1
+let g:startify_lists = [
+        \ { 'type': 'sessions',  'header': ['Sessions']       },
+        \ { 'type': 'files',     'header': ['MRU']            },
+        \ ]

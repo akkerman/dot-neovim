@@ -60,6 +60,7 @@ Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
 
+Plug 'mhinz/vim-startify'
 call plug#end()
 " plug }}}1
 " colors {{{1
