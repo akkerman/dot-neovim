@@ -18,7 +18,7 @@ function! s:align()
 endfunction
 
 " set makeprg="pandoc %:p -o %:p:r.pdf"
-let &l:makeprg = "pandoc -s --pdf-engine=xelatex --metadata-file ~/.pandoc/metadata.yml -H ~/.pandoc/header.tex ".shellescape(expand("%:p"))." -o ".shellescape(expand("%:p:r").".pdf")
+let &l:makeprg = "pandoc -s --pdf-engine=xelatex -F mermaid-filter --metadata-file ~/.pandoc/metadata.yml -H ~/.pandoc/header.tex ".shellescape(expand("%:p"))." -o ".shellescape(expand("%:p:r").".pdf")
 " let &l:makeprg = "pandoc -s -H ~/.pandoc/header.tex ".shellescape(expand("%:p"))." -o ".shellescape(expand("%:p:r").".pdf")
 " set errorformat="%f",\ line\ %1:\ %m
 "

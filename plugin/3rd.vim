@@ -9,16 +9,17 @@ nnoremap <silent> <leader>gw :Git write<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
 " tpope/vim-markdown {{{1
-"
+" This plugin actually ships with vim... no need to install
 " java and groovy result in loss of spelling feature
 let g:markdown_fenced_languages = ["yaml","sh", "javascript", "html", "xml", "json", "vim", "python"]
+let g:markdown_folding = 1
 
 " tpope/vim-projectionist {{{1
 nnoremap <c-W>a :AV<CR>
 nnoremap <c-W><c-a> :AV<CR>
 
 " iamcco/markdown-preview.nvim {{{1
-let g:mkdp_browser = 'surf'
+" let g:mkdp_browser = 'surf'
 " let g:mkdp_auto_start = 1
 
 " honza/vim-snippets {{{1
@@ -48,9 +49,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " mhinz/vim-startify {{{1
 
-let g:startify_custom_header = [] " disable childish header
-
-let g:startify_session_autoload = 1
+let g:startify_custom_header = []    " disable header
+let g:startify_session_autoload = 1  " autoload Session.vim in current dir
 let g:startify_lists = [
         \ { 'type': 'sessions',  'header': ['Sessions']       },
         \ { 'type': 'files',     'header': ['MRU']            },

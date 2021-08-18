@@ -26,7 +26,7 @@ Plug 'cespare/vim-toml'
 Plug 'christoomey/vim-tmux-navigator'
 
 " markdown
-Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " file explorer
@@ -62,8 +62,12 @@ Plug 'gcmt/taboo.vim'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
+Plug 'akkerman/vim-jasmine-fold'
 
 Plug 'mhinz/vim-startify'
+
+" Plug 'jceb/vim-orgmode'
+Plug 'kristijanhusak/orgmode.nvim'
 call plug#end()
 " plug }}}1
 " colors {{{1
@@ -105,7 +109,7 @@ command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['
 nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 " jest }}}1
 
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#status()}\ %P
+set statusline=%<%f\ %h%m%r%{ObsessionStatus()}%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#status()}\ %P
 
 set listchars=tab:»·,trail:·
 
@@ -174,3 +178,10 @@ set spellcapcheck=  " when adding a word with all lowercase to custom dict, the 
 if has('virtualedit')
     set virtualedit=block " in visual block mode, allow cursor to move where there is not text
 endif
+
+let g:netrw_browsex_viewer='/usr/bin/xdg-open'
+nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
+
+" augroup jest
+"     autocmd BufReadPost,BufNewFile *.test.js set filetype=javascript.jest
+" augroup END
