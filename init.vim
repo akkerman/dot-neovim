@@ -6,7 +6,6 @@ call functions#PlugLoad()
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'    " gc adds comments
-Plug 'tpope/vim-fugitive'      " for git commands and branch in statusbar
 Plug 'tpope/vim-repeat'        " enable repeat for supported plugins
 Plug 'tpope/vim-surround'      " ys,cs,ds - add,change,del surround
 Plug 'tpope/vim-projectionist'
@@ -15,7 +14,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-cucumber'
 
-Plug 'rbong/vim-flog'           " additional stuff for git (graph/log)
+" GIT
+Plug 'tpope/vim-fugitive'            " for git commands and branch in statusbar
+Plug 'tpope/vim-rhubarb'             " enable :GBrowse for github
+Plug 'shumphrey/fugitive-gitlab.vim' " enable :GBrowse for gitlab
+
 Plug 'wellle/targets.vim'       " additional text objects 
 
 Plug 'cespare/vim-toml'
