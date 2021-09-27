@@ -18,6 +18,7 @@ Plug 'tpope/vim-cucumber'
 Plug 'tpope/vim-fugitive'            " for git commands and branch in statusbar
 Plug 'tpope/vim-rhubarb'             " enable :GBrowse for github
 Plug 'shumphrey/fugitive-gitlab.vim' " enable :GBrowse for gitlab
+Plug 'airblade/vim-gitgutter'
 
 Plug 'wellle/targets.vim'       " additional text objects 
 
@@ -30,6 +31,7 @@ Plug 'tmux-plugins/vim-tmux'
 " markdown
 " Plug 'tpope/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'ellisonleao/glow.nvim'
 
 " file explorer
 Plug 'rbgrouleff/bclose.vim'
