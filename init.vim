@@ -62,11 +62,13 @@ Plug 'chr4/nginx.vim'
 Plug 'godlygeek/tabular'
 Plug 'gcmt/taboo.vim'
 
-" javascript
+" javascript {{{2
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
 Plug 'akkerman/vim-jasmine-fold'
+Plug 'jpalardy/vim-slime'
+" }}}2
 
 Plug 'mhinz/vim-startify'
 

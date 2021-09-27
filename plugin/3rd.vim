@@ -7,6 +7,7 @@ nnoremap <silent> <leader>gs :Git<CR>
 nnoremap <silent> <leader>gc :Git commit<CR>
 nnoremap <silent> <leader>gw :Git write<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
+nnoremap <silent> <leader>av :AV<CR>
 
 " tpope/vim-markdown {{{1
 " This plugin actually ships with vim... no need to install
@@ -55,3 +56,6 @@ let g:startify_lists = [
         \ { 'type': 'sessions',  'header': ['Sessions']       },
         \ { 'type': 'files',     'header': ['MRU']            },
         \ ]
+" jpalardy/vim-slime {{{1
+" Send code from vim to a tmux pane running a repl
+let g:slime_target = "tmux"
