@@ -124,6 +124,9 @@ nnoremap <leader>n :set hlsearch!<cr>
 nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>r :r <C-R>=expand("%:.:h") . "/"<CR>
 
+" make current file executable
+nnoremap <leader>fx :!chmod +x %<CR>
+
 
 set sessionoptions+=tabpages,globals
 
