@@ -42,8 +42,9 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'akkerman/vim-jasmine'
 
 " opening and finding files with fzf {{{2
-" Plug 'junegunn/fzf'
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
 " }}}2
 
 " opening and finding files with telescope {{{2
@@ -168,6 +169,12 @@ nnoremap <silent> <Up> :cprevious<CR>
 nnoremap <silent> <Down> :cnext<CR>
 nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
+
+" stable/center cursor
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
 
 let g:netrw_banner=0
 let g:netrw_liststyle=3 "Tree style

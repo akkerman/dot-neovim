@@ -17,4 +17,4 @@ autocmd BufReadPost,BufNewFile *.test.js set syntax=jasmine
 let g:javascript_plugin_jsdoc = 1
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>

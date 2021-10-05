@@ -4,10 +4,8 @@
 
 " tpope/vim-fugitive {{{1
 nnoremap <silent> <leader>gs :Git<CR>
-nnoremap <silent> <leader>gc :Git commit<CR>
 nnoremap <silent> <leader>gw :Git write<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
-nnoremap <silent> <leader>av :AV<CR>
 
 " tpope/vim-markdown {{{1
 " This plugin actually ships with vim... no need to install
@@ -18,6 +16,7 @@ let g:markdown_folding = 1
 " tpope/vim-projectionist {{{1
 nnoremap <c-W>a :AV<CR>
 nnoremap <c-W><c-a> :AV<CR>
+" nnoremap <silent> <leader>av :AV<CR>
 
 " iamcco/markdown-preview.nvim {{{1
 " let g:mkdp_browser = 'surf'
@@ -38,6 +37,9 @@ nnoremap <leader>tr :TabooRename
 " junegunn/fzf.vim {{{1
 " nmap <leader>\ :Files<cr>
 " nmap <leader>l :Buffers<cr>
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+nnoremap <leader>gc :GCheckout<CR>
 
 " nvim-telescope/telescope.nvim {{{1
 " Find files using Telescope command-line sugar.
