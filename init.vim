@@ -55,7 +55,8 @@ Plug 'nvim-telescope/telescope.nvim'
 " }}}2
 
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 Plug 'honza/vim-snippets'
 
 Plug 'chr4/nginx.vim'
@@ -88,6 +89,10 @@ if has('termguicolors')
     " let g:gruvbox_contrast_dark='medium' " default
     let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_hls_highlight='orange'
+    let g:gruvbox_invert_selection='0'
+
+    let &t_8f= "\<Esc>[38;2;%lu;$lu;$lum"
+    let &t_8b= "\<Esc>[48;2;%lu;$lu;$lum"
 endif
 set background=dark
 color gruvbox
@@ -108,18 +113,8 @@ if executable('ack')
   nnoremap <silent> <space>sj *<bar>:set hlsearch<bar>:grep --js --notestjs <c-r><c-w><bar>:copen<cr>
 endif
 " ack }}}1
-" jest {{{1
-" Run jest for current project
-command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
 
-" Run jest for current file
-command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
-
-" Run jest for current test
-nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
-" jest }}}1
-
-set statusline=%<%f\ %h%m%r%{ObsessionStatus()}%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#status()}\ %P
+set statusline=%<%f\ %h%m%r%{ObsessionStatus()}%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 set listchars=tab:»·,trail:·
 
@@ -143,7 +138,6 @@ set nowrap
 set directory=~/.cache/nvim/swap//
 set undodir=~/.cache/nvim/undo//
 set undofile
-" CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest
 
 let &colorcolumn="80,".join(range(120,999),",")
 
@@ -204,3 +198,105 @@ nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
 " augroup jest
 "     autocmd BufReadPost,BufNewFile *.test.js set filetype=javascript.jest
 " augroup END
+
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy' ]
+
+
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+
+
+
+lua << EOF
+local lspcfg = require('lspconfig')
+
+-- javascript and typescript server
+
+lspcfg.tsserver.setup { 
+  on_attach = function(client)
+    vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    if client.config.flags then
+        client.config.flags.allow_incremental_sync = true
+    end
+    client.resolved_capabilities.document_formatting = false
+
+    require('completion').on_attach()
+  end
+}
+
+-- eslint in efm language server
+
+local eslint = {
+  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+  lintStdin = true,
+  lintFormats = {"%f:%l:%c: %m"},
+  lintIgnoreExitCode = true,
+  formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+  formatStdin = true
+}
+
+local function eslint_config_exists()
+  local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
+
+  if not vim.tbl_isempty(eslintrc) then
+    return true
+  end
+
+  if vim.fn.filereadable("package.json") then
+    if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
+      return true
+    end
+  end
+
+  return false
+end
+
+lspcfg.efm.setup {
+  on_attach = function(client)
+    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.goto_definition = false
+
+
+     if client.resolved_capabilities.document_formatting then
+        vim.api.nvim_exec([[
+         augroup LspAutocommands
+             autocmd! * <buffer>
+             autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()
+         augroup END
+         ]], true)
+     end
+  end,
+  root_dir = function()
+    if not eslint_config_exists() then
+      return nil
+    end
+    return vim.fn.getcwd()
+  end,
+  settings = {
+    languages = {
+      javascript = {eslint},
+      javascriptreact = {eslint},
+      ["javascript.jsx"] = {eslint},
+      typescript = {eslint},
+      ["typescript.tsx"] = {eslint},
+      typescriptreact = {eslint}
+    }
+  },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact"
+  },
+}
+EOF

@@ -23,6 +23,3 @@ let b:surround_{char2nr("e")} = "${\r}"
 
 nnoremap <buffer> [<C-c> "zyiwOconsole.log(z)<Esc>
 nnoremap <buffer> ]<C-c> "zyiwoconsole.log(z)<Esc>
-
-" Use K to show documentation in preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
