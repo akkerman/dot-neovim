@@ -61,3 +61,6 @@ let g:startify_lists = [
 " jpalardy/vim-slime {{{1
 " Send code from vim to a tmux pane running a repl
 let g:slime_target = "tmux"
+" vim-test/vim-test {{{1
+let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
+let g:test#strategy = 'neomake'

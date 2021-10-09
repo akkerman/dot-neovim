@@ -71,6 +71,9 @@ Plug 'akkerman/vim-jasmine-fold'
 Plug 'jpalardy/vim-slime'
 " }}}2
 
+Plug 'vim-test/vim-test'
+Plug 'neomake/neomake'
+
 Plug 'mhinz/vim-startify'
 
 " Plug 'jceb/vim-orgmode'
