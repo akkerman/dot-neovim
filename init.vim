@@ -85,8 +85,8 @@ if has('termguicolors')
     set termguicolors
     let g:gruvbox_italic=1
     " let g:gruvbox_contrast_dark='soft'
-    let g:gruvbox_contrast_dark='medium' " default
-    " let g:gruvbox_contrast_dark='hard'
+    " let g:gruvbox_contrast_dark='medium' " default
+    let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_hls_highlight='orange'
 endif
 set background=dark
