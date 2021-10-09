@@ -16,5 +16,13 @@ autocmd BufReadPost,BufNewFile *.test.js set syntax=jasmine
 
 let g:javascript_plugin_jsdoc = 1
 
+let b:surround_{char2nr("c")} = "console.log(\r)"
+let b:surround_{char2nr("C")} = "console.log(JSON.stringify(\r, null, 2))"
+let b:surround_{char2nr("j")} = "JSON.stringify(\r, null, 2)"
+let b:surround_{char2nr("e")} = "${\r}"
+
+nnoremap <buffer> [<C-c> "zyiwOconsole.log(z)<Esc>
+nnoremap <buffer> ]<C-c> "zyiwoconsole.log(z)<Esc>
+
 " Use K to show documentation in preview window
 " nnoremap <silent> K :call <SID>show_documentation()<CR>
