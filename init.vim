@@ -55,9 +55,17 @@ Plug 'nvim-telescope/telescope.nvim'
 " }}}2
 
 
+" lsp, completion, snippets {{{1
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'honza/vim-snippets'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
+"1]}}
 
 Plug 'chr4/nginx.vim'
 
@@ -78,7 +86,7 @@ Plug 'neomake/neomake'
 Plug 'mhinz/vim-startify'
 
 " Plug 'jceb/vim-orgmode'
-Plug 'kristijanhusak/orgmode.nvim'
+" Plug 'kristijanhusak/orgmode.nvim'
 call plug#end()
 " plug }}}1
 " colors {{{1
@@ -214,12 +222,60 @@ nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 
 
+let g:vsnip_snippet_dir = expand('~/.config/nvim/snippets')
+
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" See https://github.com/hrsh7th/vim-vsnip/pull/50
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
+
+
 lua << EOF
 local lspcfg = require('lspconfig')
+
+-- Completion
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+    { name = 'buffer' },
+  }
+})
 
 -- javascript and typescript server
 
 lspcfg.tsserver.setup { 
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   on_attach = function(client)
     vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -227,8 +283,6 @@ lspcfg.tsserver.setup {
         client.config.flags.allow_incremental_sync = true
     end
     client.resolved_capabilities.document_formatting = false
-
-    require('completion').on_attach()
   end
 }
 
