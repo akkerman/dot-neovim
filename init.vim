@@ -65,6 +65,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'glepnir/lspsaga.nvim'
 "1]}}
 
 Plug 'chr4/nginx.vim'
@@ -212,15 +213,23 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy' ]
 
 
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> <C-n> <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
+nnoremap <silent> <C-p> <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
 
+nnoremap <silent> <A-d> <cmd>lua require('lspsaga.floaterm').open_float_terminal()<CR>
+tnoremap <silent> <A-d> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>
 
+nnoremap <silent> <C-d> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-u> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+
+nnoremap <silent>gn <cmd>lua require('lspsaga.rename').rename()<CR>
 
 let g:vsnip_snippet_dir = expand('~/.config/nvim/snippets')
 
@@ -246,8 +255,14 @@ nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
 
 
+" code action
+nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
+
 lua << EOF
 local lspcfg = require('lspconfig')
+local saga = require 'lspsaga'
+saga.init_lsp_saga()
 
 -- Completion
 local cmp = require'cmp'
