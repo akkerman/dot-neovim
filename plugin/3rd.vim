@@ -16,6 +16,9 @@ let g:markdown_folding = 1
 " tpope/vim-projectionist {{{1
 nnoremap <c-W>a :AV<CR>
 nnoremap <c-W><c-a> :AV<CR>
+
+nnoremap <c-W>A :bo :AV<CR>
+
 " nnoremap <silent> <leader>av :AV<CR>
 
 " iamcco/markdown-preview.nvim {{{1
