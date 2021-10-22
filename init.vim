@@ -39,7 +39,6 @@ Plug 'francoiscabrol/ranger.vim'
 
 " colors
 Plug 'gruvbox-community/gruvbox'
-Plug 'akkerman/vim-jasmine'
 
 " opening and finding files with fzf {{{2
 Plug 'junegunn/fzf'
@@ -145,7 +144,7 @@ set undodir=~/.cache/nvim/undo//
 set undofile
 " CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest
 
-let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn="80,120"
 
 set cursorline
 
