@@ -10,6 +10,8 @@ iabbrev discipilnes disciplines
 iabbrev Discipilne Discipline
 iabbrev discipilne discipline
 iabbrev discipine discipline
+iabbrev retreive retrieve
+iabbrev Retreive Retrieve
 
 " coding snippets
 iabbrev edl // eslint-disable-line
