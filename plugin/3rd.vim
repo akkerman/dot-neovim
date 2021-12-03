@@ -10,7 +10,7 @@ nnoremap <silent> <leader>gp :Git push<CR>
 " tpope/vim-markdown {{{1
 " This plugin actually ships with vim... no need to install
 " java and groovy result in loss of spelling feature
-let g:markdown_fenced_languages = ["yaml","sh", "javascript", "html", "xml", "json", "vim", "python"]
+let g:markdown_fenced_languages = ["yaml","sh", "javascript", "html", "xml", "json", "vim", "python", "mermaid", "plantuml"]
 let g:markdown_folding = 1
 
 " tpope/vim-projectionist {{{1
@@ -18,6 +18,7 @@ nnoremap <c-W>a :AV<CR>
 nnoremap <c-W><c-a> :AV<CR>
 
 nnoremap <c-W>A :bo :AV<CR>
+nnoremap <c-W>i :sp %:p:h/index.js<CR>
 
 " nnoremap <silent> <leader>av :AV<CR>
 
@@ -55,10 +56,17 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " mhinz/vim-startify {{{1
 
-let g:startify_custom_header = []    " disable header
+let g:startify_custom_header = ['Startlify']    " disable header
 let g:startify_session_autoload = 1  " autoload Session.vim in current dir
+let g:startify_bookmarks = [ 
+        \ '~/git/dsplatform/capo-frontend', 
+        \ '~/git/dsplatform/analytics-wiki',
+        \ '~/git/dsplatform/dsp-analytics-frontend',
+        \ '~/git/dsplatform/dsp-analytics-services',
+        \ ]
 let g:startify_lists = [
         \ { 'type': 'sessions',  'header': ['Sessions']       },
+        \ { 'type': 'bookmarks', 'header': ['Bookmarks']      },
         \ { 'type': 'files',     'header': ['MRU']            },
         \ ]
 " jpalardy/vim-slime {{{1

@@ -25,7 +25,7 @@ Plug 'wellle/targets.vim'       " additional text objects
 Plug 'cespare/vim-toml'
 
 " tmux
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 
 " markdown
@@ -39,6 +39,7 @@ Plug 'francoiscabrol/ranger.vim'
 
 " colors
 Plug 'gruvbox-community/gruvbox'
+Plug 'romgrk/doom-one.vim'
 
 " opening and finding files with fzf {{{2
 Plug 'junegunn/fzf'
@@ -77,15 +78,18 @@ Plug 'mhinz/vim-startify'
 
 " Plug 'jceb/vim-orgmode'
 Plug 'kristijanhusak/orgmode.nvim'
+
+Plug 'chazmcgarvey/vim-mermaid'
+Plug 'aklt/plantuml-syntax'
 call plug#end()
 " plug }}}1
 " colors {{{1
 if has('termguicolors')
     set termguicolors
     let g:gruvbox_italic=1
-    " let g:gruvbox_contrast_dark='soft'
+    let g:gruvbox_contrast_dark='soft'
     " let g:gruvbox_contrast_dark='medium' " default
-    let g:gruvbox_contrast_dark='hard'
+    " let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_hls_highlight='orange'
 endif
 set background=dark
@@ -97,7 +101,7 @@ if executable('ack')
   set grepformat=%f:%l:%c:%m
   " cnoreabbrev ack grep
   cnoreabbrev grepjs grep --js --notestjs
-  cnoreabbrev ackjs ack --js --notestjs
+  cnoreabbrev ackjs grep --js --notestjs
   command! -bang -nargs=* Ack
   \ call fzf#vim#grep(
   \   'ack --nogroup --column --color '.<q-args>, 1,
@@ -162,6 +166,7 @@ set smartcase  " only ignore case when the search is lowercase
 nnoremap <leader>wt :$tab split<CR>
 nnoremap <c-w><c-t> :tab split<CR>
 nnoremap <c-w>t :tab split<CR>
+nnoremap <c-w>z :wincmd_<cr>:wincmd<bar><cr>
 
 " open file in vscode
 nnoremap <leader>vc :!code %&disown<CR>
@@ -173,9 +178,9 @@ nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
 
 " stable/center cursor
-nnoremap n nzzzv
-nnoremap N Nzzzv
 nnoremap J mzJ`z
+" nnoremap n nzzzv
+" nnoremap N Nzzzv
 
 
 let g:netrw_banner=0
@@ -197,9 +202,8 @@ if has('virtualedit')
     set virtualedit=block " in visual block mode, allow cursor to move where there is not text
 endif
 
+" apply last edit to selected lines
+xmap <silent> . :normal .<cr>
+
 let g:netrw_browsex_viewer='/usr/bin/xdg-open'
 nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
-
-" augroup jest
-"     autocmd BufReadPost,BufNewFile *.test.js set filetype=javascript.jest
-" augroup END
