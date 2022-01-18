@@ -81,6 +81,11 @@ Plug 'kristijanhusak/orgmode.nvim'
 
 Plug 'chazmcgarvey/vim-mermaid'
 Plug 'aklt/plantuml-syntax'
+
+Plug 'urso/haskell_syntax.vim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
 call plug#end()
 " plug }}}1
 " colors {{{1
