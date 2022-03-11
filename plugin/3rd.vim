@@ -54,21 +54,24 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" mhinz/vim-startify {{{1
+" just in case I hit the emacs roam binding
+nnoremap <space>nrf <cmd>Telescope find_files<cr>
+nnoremap <space>. <cmd>Telescope find_files<cr>
 
-let g:startify_custom_header = ['Startlify']    " disable header
-let g:startify_session_autoload = 1  " autoload Session.vim in current dir
-let g:startify_bookmarks = [ 
-        \ '~/git/dsplatform/capo-frontend', 
-        \ '~/git/dsplatform/analytics-wiki',
-        \ '~/git/dsplatform/dsp-analytics-frontend',
-        \ '~/git/dsplatform/dsp-analytics-services',
-        \ ]
-let g:startify_lists = [
-        \ { 'type': 'sessions',  'header': ['Sessions']       },
-        \ { 'type': 'bookmarks', 'header': ['Bookmarks']      },
-        \ { 'type': 'files',     'header': ['MRU']            },
-        \ ]
+" mhinz/vim-startify {{{1
+"  let g:startify_custom_header = ['Startify']    " disable header
+"  let g:startify_session_autoload = 1  " autoload Session.vim in current dir
+"  let g:startify_bookmarks = [ 
+"          \ '~/git/dsplatform/capo-frontend', 
+"          \ '~/git/dsplatform/analytics-wiki',
+"          \ '~/git/dsplatform/dsp-analytics-frontend',
+"          \ '~/git/dsplatform/dsp-analytics-services',
+"          \ ]
+"  let g:startify_lists = [
+"          \ { 'type': 'sessions',  'header': ['Sessions']       },
+"          \ { 'type': 'bookmarks', 'header': ['Bookmarks']      },
+"          \ { 'type': 'files',     'header': ['MRU']            },
+"          \ ]
 " jpalardy/vim-slime {{{1
 " Send code from vim to a tmux pane running a repl
 let g:slime_target = "tmux"

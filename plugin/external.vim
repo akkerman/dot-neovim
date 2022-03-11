@@ -10,3 +10,4 @@ vnoremap <space>p :w !silicon -l %:e<cr>
 
 nnoremap <space>c :!xclip -selection clipboard %<cr>
 vnoremap <space>c :w !xclip -selection clipboard<cr>
+

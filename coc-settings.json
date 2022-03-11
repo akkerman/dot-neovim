@@ -2,6 +2,7 @@
   "coverage.enabled": true,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.enableMarkdown":true,
+  "yaml.validate": true,
   "eslint.enable": true,
   "eslint.autoFixOnSave": true,
   "javascript.showUnused": true,

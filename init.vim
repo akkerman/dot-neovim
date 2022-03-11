@@ -74,7 +74,6 @@ Plug 'jpalardy/vim-slime'
 Plug 'vim-test/vim-test'
 Plug 'neomake/neomake'
 
-Plug 'mhinz/vim-startify'
 
 " Plug 'jceb/vim-orgmode'
 Plug 'kristijanhusak/orgmode.nvim'
@@ -151,7 +150,7 @@ set nowrap
 set directory=~/.cache/nvim/swap//
 set undodir=~/.cache/nvim/undo//
 set undofile
-" CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest
+" CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest coc-yaml
 
 let &colorcolumn="80,120"
 
@@ -175,6 +174,8 @@ nnoremap <c-w>z :wincmd_<cr>:wincmd<bar><cr>
 
 " open file in vscode
 nnoremap <leader>vc :!code %&disown<CR>
+" open file in emacs
+nnoremap <leader>ve :!emacsclient -c % <CR>
 
 " open next/previous (file) in quickfix list
 nnoremap <silent> <Up> :cprevious<CR>

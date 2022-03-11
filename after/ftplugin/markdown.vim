@@ -3,6 +3,7 @@ set linebreak
 set nolist
 set spelllang=nl
 setlocal spell
+setlocal suffixesadd+=.md,.markdown
 
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
