@@ -57,6 +57,9 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " just in case I hit the emacs roam binding
 nnoremap <space>nrf <cmd>Telescope find_files<cr>
 nnoremap <space>. <cmd>Telescope find_files<cr>
+nnoremap <space><space> <cmd>Telescope find_files<cr>
+nnoremap <space>pt <cmd>grep --js 'TODO\\|it\\.todo\\|test\\.todo'<cr><cmd>Telescope quickfix<cr>
+nnoremap <space>ps <cmd>grep --js 'it\\.skip\\|test\\.skip\\|describe\\.skip\\| xit\(\\|it\\.only\\|test\\.only'<cr><cmd>Telescope quickfix<cr>
 
 " mhinz/vim-startify {{{1
 "  let g:startify_custom_header = ['Startify']    " disable header
@@ -78,3 +81,5 @@ let g:slime_target = "tmux"
 " vim-test/vim-test {{{1
 let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
 let g:test#strategy = 'neomake'
+" iamcco/markdown-preview.nvim {{{1
+nnoremap <space>mt :MarkdownPreviewToggle<cr>
