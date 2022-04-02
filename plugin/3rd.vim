@@ -43,6 +43,8 @@ nnoremap <leader>tr :TabooRename
 " nmap <leader>l :Buffers<cr>
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
+
+" stsewd/fzf-checkout.vim {{{1
 nnoremap <leader>gc :GCheckout<CR>
 
 " nvim-telescope/telescope.nvim {{{1
@@ -83,3 +85,26 @@ let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
 let g:test#strategy = 'neomake'
 " iamcco/markdown-preview.nvim {{{1
 nnoremap <space>mt :MarkdownPreviewToggle<cr>
+
+" nvim-orgmode/orgmode {{{1
+lua << EOF
+
+-- Load custom tree-sitter grammar for org filetype
+require('orgmode').setup_ts_grammar()
+
+-- Tree-sitter configuration
+require'nvim-treesitter.configs'.setup {
+  -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
+  highlight = {
+    enable = true,
+    disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
+    additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
+  },
+  ensure_installed = {'org'}, -- Or run :TSUpdate org
+}
+
+require('orgmode').setup({
+  org_agenda_files = {'~/org/*', '~/Dropbox/Apps/Orgzly/*' },
+  org_default_notes_file = '~/org/notes.org',
+})
+EOF

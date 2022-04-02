@@ -10,7 +10,7 @@ setlocal makeprg=yarn\ run\ --silent\ lint\ --format\ compact
 setlocal errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
 setlocal errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
 
-" setlocal makeprg=npx\ jest\ %\ --reporters\ jest-vim-reporter
+" setlocal makeprg=npx\ jest\ --reporters\ jest-vim-reporter
 
 " autocmd BufReadPost,BufNewFile *.test.js set syntax=jasmine
 

@@ -76,7 +76,8 @@ Plug 'neomake/neomake'
 
 
 " Plug 'jceb/vim-orgmode'
-Plug 'kristijanhusak/orgmode.nvim'
+" Plug 'kristijanhusak/orgmode.nvim'
+Plug 'nvim-orgmode/orgmode'
 
 Plug 'chazmcgarvey/vim-mermaid'
 Plug 'aklt/plantuml-syntax'
