@@ -45,7 +45,7 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 
 " stsewd/fzf-checkout.vim {{{1
-nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gc :GBranches<CR>
 
 " nvim-telescope/telescope.nvim {{{1
 " Find files using Telescope command-line sugar.
@@ -83,6 +83,7 @@ let g:slime_target = "tmux"
 " vim-test/vim-test {{{1
 let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
 let g:test#strategy = 'neomake'
+call neomake#configure#automake('nrwi', 500)
 " iamcco/markdown-preview.nvim {{{1
 nnoremap <space>mt :MarkdownPreviewToggle<cr>
 

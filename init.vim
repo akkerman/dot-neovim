@@ -69,6 +69,7 @@ Plug 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
 Plug 'akkerman/vim-jasmine-fold'
 Plug 'jpalardy/vim-slime'
+Plug 'digitaltoad/vim-pug'
 " }}}2
 
 Plug 'vim-test/vim-test'
@@ -189,6 +190,8 @@ nnoremap J mzJ`z
 " nnoremap n nzzzv
 " nnoremap N Nzzzv
 
+" goto file in split
+nnoremap gF <c-w>v gf
 
 let g:netrw_banner=0
 let g:netrw_liststyle=3 "Tree style
