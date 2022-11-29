@@ -140,6 +140,7 @@ nnoremap <leader>n :set hlsearch!<cr>
 " Open files located in the same dir as the current file
 nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>r :r <C-R>=expand("%:.:h") . "/"<CR>
+nnoremap <leader>lcd :c <C-R>=expand("%:.:h") . "/"<CR>
 
 " make current file executable
 nnoremap <leader>fx :!chmod +x %<CR>
