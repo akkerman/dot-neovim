@@ -87,6 +87,8 @@ Plug 'urso/haskell_syntax.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
+Plug 'udalov/kotlin-vim'
+
 call plug#end()
 " plug }}}1
 " colors {{{1
