@@ -109,3 +109,5 @@ require('orgmode').setup({
   org_default_notes_file = '~/org/notes.org',
 })
 EOF
+" APZelos/blamer.vim {{{1
+nnoremap <leader>b <cmd>BlamerToggle<cr>

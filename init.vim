@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'            " for git commands and branch in statusbar
 Plug 'tpope/vim-rhubarb'             " enable :GBrowse for github
 Plug 'shumphrey/fugitive-gitlab.vim' " enable :GBrowse for gitlab
 Plug 'airblade/vim-gitgutter'
+Plug 'APZelos/blamer.nvim' 
 
 Plug 'wellle/targets.vim'       " additional text objects 
 
@@ -88,6 +89,8 @@ Plug 'urso/haskell_syntax.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 Plug 'udalov/kotlin-vim'
+
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 " plug }}}1
