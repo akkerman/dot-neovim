@@ -145,9 +145,14 @@ nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>r :r <C-R>=expand("%:.:h") . "/"<CR>
 nnoremap <leader>lcd :c <C-R>=expand("%:.:h") . "/"<CR>
 
+" Open / create file
+noremap <leader>gf :e <cfile><cr>
+
 " make current file executable
 nnoremap <leader>fx :!chmod +x %<CR>
 
+" copy link to current file
+nnoremap <leader>c :let @+ = expand("%:p")<cr>
 
 set sessionoptions+=tabpages,globals
 

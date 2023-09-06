@@ -6,3 +6,6 @@ setlocal shiftwidth=2
 setlocal expandtab
 
 setlocal cursorcolumn
+
+setlocal foldmethod=indent
+setlocal foldlevel=2

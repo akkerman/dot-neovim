@@ -16,5 +16,6 @@
       "javascript"
     ]
   },
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "tsserver.tsdk": "/home/akkerman/.config/coc/extensions/node_modules/coc-tsserver/node_modules/typescript/lib"
 }

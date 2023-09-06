@@ -25,5 +25,7 @@ let b:surround_{char2nr("d")} = "describe(' ___ ', () => {\r})"
 nnoremap <buffer> [<C-c> "zyiwOconsole.log(z)<Esc>
 nnoremap <buffer> ]<C-c> "zyiwoconsole.log(z)<Esc>
 
+nnoremap <space>t :TestFile<CR>
+
 " Use K to show documentation in preview window
 " nnoremap <silent> K :call <SID>show_documentation()<CR>
