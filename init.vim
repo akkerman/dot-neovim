@@ -228,3 +228,7 @@ xmap <silent> . :normal .<cr>
 
 let g:netrw_browsex_viewer='/usr/bin/xdg-open'
 nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
+
+lua << EOF
+require('glow').setup()
+EOF
