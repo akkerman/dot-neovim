@@ -25,6 +25,7 @@ nnoremap <c-W>i :sp %:p:h/index.js<CR>
 " iamcco/markdown-preview.nvim {{{1
 " let g:mkdp_browser = 'surf'
 " let g:mkdp_auto_start = 1
+nnoremap <space>mt :MarkdownPreviewToggle<cr>
 
 " honza/vim-snippets {{{1
 " javascript 
@@ -84,8 +85,6 @@ let g:slime_target = "tmux"
 let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
 let g:test#strategy = 'neomake'
 call neomake#configure#automake('nrwi', 500)
-" iamcco/markdown-preview.nvim {{{1
-nnoremap <space>mt :MarkdownPreviewToggle<cr>
 
 " nvim-orgmode/orgmode {{{1
 lua << EOF
