@@ -184,6 +184,7 @@ nnoremap <leader>wt :$tab split<CR>
 nnoremap <c-w><c-t> :tab split<CR>
 nnoremap <c-w>t :tab split<CR>
 nnoremap <c-w>z :wincmd_<cr>:wincmd<bar><cr>
+nnoremap <c-w>N :vnew<cr>
 
 " open file in vscode
 nnoremap <leader>vc :!code %&disown<CR>
