@@ -14,11 +14,11 @@ let g:markdown_fenced_languages = ["yaml","sh", "javascript", "html", "xml", "js
 let g:markdown_folding = 1
 
 " tpope/vim-projectionist {{{1
-nnoremap <c-W>a :AV<CR>
-nnoremap <c-W><c-a> :AV<CR>
+nmap <c-W>a :AV<CR>
+nmap <c-W><c-a> :AV<CR>
 
-nnoremap <c-W>A :bo :AV<CR>
-nnoremap <c-W>i :sp %:p:h/index.js<CR>
+nmap <c-W>A :bo :AV<CR>
+nmap <c-W>i :sp %:p:h/index.js<CR>
 
 " nnoremap <silent> <leader>av :AV<CR>
 

@@ -186,6 +186,8 @@ nnoremap <c-w>t :tab split<CR>
 nnoremap <c-w>z :wincmd_<cr>:wincmd<bar><cr>
 nnoremap <c-w>N :vnew<cr>
 
+nnoremap <space>w <c-w>
+
 " open file in vscode
 nnoremap <leader>vc :!code %&disown<CR>
 " open file in emacs
