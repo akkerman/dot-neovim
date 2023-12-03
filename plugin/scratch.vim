@@ -9,3 +9,4 @@ command! -nargs=0 Scratch call s:NewScratch()
 
 " open current line as json in scratch buffer
 nnoremap <leader>J yy:Scratch<cr>p:%!jq '.'<cr>:set ft=json<cr>Wz
+nmap <c-W>S :Scratch<cr> 
