@@ -6,10 +6,11 @@ setlocal tabstop=2
 setlocal shiftwidth=2
 setlocal expandtab
 
-setlocal makeprg=yarn\ run\ --silent\ lint\ --format\ compact
-setlocal errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
-setlocal errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
-
+" setlocal makeprg=yarn\ run\ --silent\ lint\ --format\ compact
+setlocal makeprg=npx\ tsc
+setlocal errorformat=%+A\ %#%f\ %#(%l\\\,%c):\ %m,%C%m
+" setlocal errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
+" setlocal errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
 " setlocal makeprg=npx\ jest\ --reporters\ jest-vim-reporter
 
 " autocmd BufReadPost,BufNewFile *.test.js set syntax=jasmine
