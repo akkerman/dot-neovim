@@ -1,5 +1,9 @@
 function! s:Jwt(token)
-   execute ":new | r !jwt " . a:token
+   execute 'new'
+   setlocal buftype=nofile
+   setlocal bufhidden=hide
+   setlocal noswapfile
+   execute "r !jwt " . a:token
    execute ":set ft=json wrap"
 endfunction
 
