@@ -10,8 +10,8 @@ nnoremap <silent> <leader>gp :Git push<CR>
 " tpope/vim-markdown {{{1
 " This plugin actually ships with vim... no need to install
 " java and groovy result in loss of spelling feature
-let g:markdown_fenced_languages = ["yaml","sh", "javascript", "html", "xml", "json", "vim", "python", "mermaid", "plantuml"]
-let g:markdown_folding = 1
+let g:markdown_fenced_languages = ["yaml","sh", "javascript", "html", "xml", "json", "vim", "python", "mermaid", "plantuml", "dot"]
+" let g:markdown_folding = 1
 
 " tpope/vim-projectionist {{{1
 nmap <c-W>a :AV<CR>
@@ -23,7 +23,7 @@ nmap <c-W>i :sp %:p:h/index.js<CR>
 " nnoremap <silent> <leader>av :AV<CR>
 
 " iamcco/markdown-preview.nvim {{{1
-let g:mkdp_browser = 'qutebrowser'
+let g:mkdp_browser = 'chromium'
 " let g:mkdp_auto_start = 1
 nnoremap <space>mt :MarkdownPreviewToggle<cr>
 
@@ -54,6 +54,7 @@ nnoremap <leader>\ <cmd>Telescope find_files<cr>
 nnoremap <leader>l <cmd>Telescope buffers<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <space>/ <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 

@@ -92,6 +92,8 @@ Plug 'udalov/kotlin-vim'
 
 Plug 'hashivim/vim-terraform'
 
+Plug 'folke/which-key.nvim'
+
 call plug#end()
 " plug }}}1
 " colors {{{1
@@ -111,8 +113,7 @@ if executable('ack')
   set grepprg=ack\ --nogroup\ --column\ "$*"
   set grepformat=%f:%l:%c:%m
   " cnoreabbrev ack grep
-  cnoreabbrev grepjs grep --js --notestjs
-  cnoreabbrev ackjs grep --js --notestjs
+  cnoreabbrev grepjs grep --js --notestjs --ts --notestjs
   command! -bang -nargs=* Ack
   \ call fzf#vim#grep(
   \   'ack --nogroup --column --color '.<q-args>, 1,
@@ -134,6 +135,7 @@ nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 " jest }}}1
 
 set statusline=%<%f\ %h%m%r%{ObsessionStatus()}%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#status()}\ %P
+set laststatus=3 " always but only last window
 
 set listchars=tab:»·,trail:·
 

@@ -13,6 +13,8 @@ iabbrev discipine discipline
 iabbrev discpline discipline
 iabbrev retreive retrieve
 iabbrev Retreive Retrieve
+iabbrev briks bricks
+iabbrev brik brick
 
 
 " coding snippets
