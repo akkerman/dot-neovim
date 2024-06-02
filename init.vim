@@ -39,7 +39,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 
 " colors
-Plug 'gruvbox-community/gruvbox'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'romgrk/doom-one.vim'
 
 " opening and finding files with fzf {{{2
@@ -97,16 +97,7 @@ Plug 'folke/which-key.nvim'
 call plug#end()
 " plug }}}1
 " colors {{{1
-if has('termguicolors')
-    set termguicolors
-    let g:gruvbox_italic=1
-    let g:gruvbox_contrast_dark='soft'
-    " let g:gruvbox_contrast_dark='medium' " default
-    " let g:gruvbox_contrast_dark='hard'
-    let g:gruvbox_hls_highlight='orange'
-endif
 set background=dark
-color gruvbox
 " colors }}}1
 " ack {{{1
 if executable('ack')
@@ -236,4 +227,31 @@ nmap gx :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
 
 lua << EOF
 require('glow').setup()
+
+require("gruvbox").setup({
+  terminal_colors = true, -- add neovim terminal colors
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = {
+    strings = true,
+    emphasis = true,
+    comments = true,
+    operators = false,
+    folds = true,
+  },
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "soft", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+vim.cmd("colorscheme gruvbox")
+
 EOF
