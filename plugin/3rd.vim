@@ -60,6 +60,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " just in case I hit the emacs roam binding
 nnoremap <space>nrf <cmd>Telescope find_files<cr>
+nnoremap <space>/ <cmd>Telescope live_grep<cr>
 nnoremap <space>. <cmd>Telescope find_files<cr>
 nnoremap <space><space> <cmd>Telescope find_files<cr>
 nnoremap <space>pt <cmd>grep --js 'TODO\\|it\\.todo\\|test\\.todo'<cr><cmd>Telescope quickfix<cr>
