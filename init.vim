@@ -192,10 +192,6 @@ nnoremap <silent> <Down> :cnext<CR>
 nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
 
-" stable/center cursor
-nnoremap J mzJ`z
-" nnoremap n nzzzv
-" nnoremap N Nzzzv
 
 " goto file in split
 nnoremap gF <c-w>v gf
