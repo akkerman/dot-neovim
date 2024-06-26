@@ -184,7 +184,7 @@ nnoremap <space>w <c-w>
 " open file in vscode
 nnoremap <leader>vc :!code %&disown<CR>
 " open file in emacs
-nnoremap <leader>ve :!emacsclient -c % <CR>
+nnoremap <leader>ve :!emacsclient --no-wait -c % <CR>
 
 " open next/previous (file) in quickfix list
 nnoremap <silent> <Up> :cprevious<CR>
