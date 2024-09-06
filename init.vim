@@ -88,11 +88,11 @@ Plug 'urso/haskell_syntax.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
-Plug 'udalov/kotlin-vim'
 
 Plug 'hashivim/vim-terraform'
 
-Plug 'folke/which-key.nvim'
+
+Plug 'fatih/vim-go'
 
 call plug#end()
 " plug }}}1
