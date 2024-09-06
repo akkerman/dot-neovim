@@ -1,7 +1,6 @@
 " file: plugin/external.vim
 
 " format json
-nnoremap <leader>j :%!jq '.'<cr>:set ft=json<cr>
 nnoremap <leader>jj :%!jq '.'<cr>:set ft=json<cr>
 nnoremap <leader>jJ :%!jq '.' -c<cr>:set ft=json<cr>
 " format xml
