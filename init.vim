@@ -93,6 +93,7 @@ Plug 'hashivim/vim-terraform'
 
 
 Plug 'fatih/vim-go'
+Plug 'github/copilot.vim'
 
 call plug#end()
 " plug }}}1
