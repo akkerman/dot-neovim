@@ -23,7 +23,7 @@ nmap <c-W>i :sp %:p:h/index.js<CR>
 " nnoremap <silent> <leader>av :AV<CR>
 
 " iamcco/markdown-preview.nvim {{{1
-let g:mkdp_browser = 'chromium'
+let g:mkdp_browser = 'google-chrome-stable'
 " let g:mkdp_auto_start = 1
 nnoremap <space>mt :MarkdownPreviewToggle<cr>
 
