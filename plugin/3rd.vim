@@ -85,8 +85,8 @@ nnoremap <space>ps <cmd>grep --js 'it\\.skip\\|test\\.skip\\|describe\\.skip\\| 
 let g:slime_target = "tmux"
 " vim-test/vim-test {{{1
 let g:test#javascript#jest#options = '--reporters jest-vim-reporter'
-let g:test#strategy = 'neomake'
-call neomake#configure#automake('nrwi', 500)
+" let g:test#strategy = 'neomake'
+" call neomake#configure#automake('nrwi', 500)
 
 " nvim-orgmode/orgmode {{{1
 " lua << EOF

@@ -74,7 +74,7 @@ Plug 'digitaltoad/vim-pug'
 " }}}2
 
 Plug 'vim-test/vim-test'
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 
 
 " Plug 'jceb/vim-orgmode'
