@@ -12,7 +12,6 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-abolish'       " Case insensitive substitute
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-cucumber'
 
 " GIT
 Plug 'tpope/vim-fugitive'            " for git commands and branch in statusbar
