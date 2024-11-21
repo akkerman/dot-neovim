@@ -55,7 +55,6 @@ Plug 'nvim-telescope/telescope.nvim'
 " }}}2
 
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 
 Plug 'chr4/nginx.vim'
@@ -116,16 +115,12 @@ endif
 " ack }}}1
 " jest {{{1
 " Run jest for current project
-command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
 
 " Run jest for current file
-command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
 
 " Run jest for current test
-nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 " jest }}}1
 
-set statusline=%<%f\ %h%m%r%{ObsessionStatus()}%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %{coc#status()}\ %P
 set laststatus=3 " always but only last window
 
 set listchars=tab:»·,trail:·
@@ -156,7 +151,6 @@ set nowrap
 set directory=~/.cache/nvim/swap//
 set undodir=~/.cache/nvim/undo//
 set undofile
-" CocInstall coc-tsserver coc-snippets coc-eslint coc-json coc-jest coc-yaml
 
 let &colorcolumn="80,120"
 
