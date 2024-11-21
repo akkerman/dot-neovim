@@ -26,6 +26,4 @@ return {
       map('n', '<leader>gN', ':Git now<CR>', { desc = 'Git commit all with timestamp' })
     end,
   },
-
-  'github/copilot.vim',
 }
