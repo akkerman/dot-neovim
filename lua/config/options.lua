@@ -1,0 +1,11 @@
+local opt = vim.opt
+opt.background = "dark"
+opt.number = true
+opt.relativenumber = false
+opt.mouse = "n"
+opt.undofile = true
+opt.swapfile = false
+opt.cursorline = true
+opt.scrolloff = 3
+opt.smartcase = true
+opt.ignorecase = true
