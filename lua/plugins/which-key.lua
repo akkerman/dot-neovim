@@ -44,6 +44,8 @@ return { -- shows pending keybinds.
      { '<leader>f', group = '+file' },
      { '<leader>b', group = '+buffer' },
      { '<leader>g', group = '+git' },
+     { '<leader>gh', group = '+hunk' },
+     { '<leader>gb', group = '+blame' },
     },
   },
 }
