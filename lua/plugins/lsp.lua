@@ -58,6 +58,25 @@ return {
           bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
         end,
       }
+      -- Configureer YAML (yamlls)
+      -- npm install -g yaml-language-server
+      lspconfig.yamlls.setup {
+        settings = {
+          yaml = {
+            schemas = {
+              -- zie https://schemastore.org/json/
+              ["https://spec.openapis.org/oas/3.1/schema/2022-10-07"] = { "*openapi.yaml", "*openapi.yml" },
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = { "docker-compose*.yaml", "docker-compose*.yml" },
+              ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
+              ["https://json.schemastore.org/traefik-v3.json"] = { "*.traefik*.yaml", "*.traefik*.yml" },
+            },
+            validate = true,
+            format = true,
+            hover = true,
+            completion = true,
+          },
+        },
+      }
     end
   }
 }
