@@ -58,6 +58,7 @@ return {
           bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
         end,
       }
+
       -- Configureer YAML (yamlls)
       -- npm install -g yaml-language-server
       lspconfig.yamlls.setup {
@@ -77,6 +78,33 @@ return {
           },
         },
       }
-    end
+
+      -- Configureer Lua (lua_ls)
+      -- paru -S lua-language-server
+      lspconfig.lua_ls.setup {
+        settings = {
+          Lua = {
+            runtime = {
+              -- LuaJIT in Neovim gebruiken
+              version = "LuaJIT",
+              path = vim.split(package.path, ";"),
+            },
+            diagnostics = {
+              -- Herken 'vim' als een globale variabele
+              globals = { "vim" },
+            },
+            workspace = {
+              -- Zorg dat de server Neovim runtime-bestanden herkent
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false, -- Voorkom pop-ups over third-party tooling
+            },
+            telemetry = {
+              enable = false, -- Schakel telemetrie uit
+            },
+          },
+        },
+      }
+
+    end -- end of lsp config
   }
 }
