@@ -42,6 +42,7 @@ return { -- shows pending keybinds.
     -- Document existing key chains
     spec = {
      { '<leader>f', group = '+file' },
+     { '<leader>fe', group = '+explore' },
      { '<leader>b', group = '+buffer' },
      { '<leader>g', group = '+git' },
      { '<leader>gh', group = '+hunk' },
