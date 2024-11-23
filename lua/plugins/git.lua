@@ -47,7 +47,7 @@ return {
 
       -- Blame Command
       map('n', '<leader>gbl', ':Gitsigns blame_line<CR>', { desc = 'Blame Git line' })
-      map('n', '<leader>gbt', ':Gitsigns toggle_current_line_blame', { desc = 'toggle blame Git current line' })
+      map('n', '<leader>gbt', ':Gitsigns toggle_current_line_blame<CR>', { desc = 'toggle blame Git current line' })
     end
   }
 }
