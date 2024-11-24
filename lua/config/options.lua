@@ -9,3 +9,4 @@ opt.cursorline = true
 opt.scrolloff = 3
 opt.smartcase = true
 opt.ignorecase = true
+opt.wrap = false
