@@ -27,4 +27,6 @@ vim.cmd([[
 vim.cmd([[
   cnoreabbrev cd. cd %:p:h
   cnoreabbrev lcd. lcd %:p:h:h
+  cnoreabbrev cdg cd `git rev-parse --show-toplevel`
+  cnoreabbrev lcdg lcd `git rev-parse --show-toplevel`
 ]])
