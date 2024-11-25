@@ -1,8 +1,32 @@
+local options = function(desc)
+  return { noremap = true, silent = true, desc = desc }
+end
+
 local map = vim.keymap.set
 map('n', '<leader>n', ':set hlsearch!<CR>', { desc = 'Toggle search highlight' })
 map('n', '<leader>e', ":e <C-R>=expand('%:.:h') . '/'<CR>", { desc = 'edit other file in same dir as current' })
 map('n', '<leader>gf', ':e <cfile><cr>', { desc = 'Create file under cursor and edit' })
 map('n', '<leader>F=', 'mzgg=G`z', { desc = 'auto-indent entire file' })
+map('n', 'gF', '<C-w>vgf', options('Open file under cursor in vertical split'))
+
+-- Open next/previous file in quickfix list
+map('n', '<Up>', ':cprevious<CR>', options('Previous quickfix item' ))
+map('n', '<Down>', ':cnext<CR>', options('Next quickfix item'))
+map('n', '<Left>', ':cpfile<CR>', options('Previous file in quickfix list'))
+map('n', '<Right>', ':cnfile<CR>',options('Next file in quickfix list'))
+
+-- Open in other editor
+map('n', '<leader>foc', ':!code % &disown<CR>', options('Open the current file in VSCode'))
+map('n', '<leader>foe', ':!emacsclient --no-wait -c %<CR>', options('Open the current file in Emacs'))
+map('n', '<leader>fot', ':!typora % &disown<CR>', options('Open the current file in Typora'))
+
+-- window management
+map('n', '<C-w><C-t>', ':tab split<CR>', options('Open current window in a new tab'))
+map('n', '<C-w>t', ':tab split<CR>', options('Open current window in a new tab'))
+map('n', '<C-w>z', ':wincmd_<CR>:wincmd|<CR>', options('Zoom current pane'))
+map('n', '<C-w>N', ':vnew<CR>', options('Create a new vertical split'))
+
+map('x', '.', ':normal .<CR>', options('Apply last edit to selected lines'))
 
 -- Utility function for getting the selected range in visual mode
 local get_visual_selection = function()
@@ -77,3 +101,4 @@ map('n', '<leader>cp', function()
   vim.cmd('silent! !cp % ~/Downloads/code')
   vim.notify('Copied file to ~/Downloads/code')
 end, { desc = 'Copy file to ~/Downloads/code' })
+

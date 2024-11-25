@@ -43,6 +43,7 @@ return { -- shows pending keybinds.
     spec = {
      { '<leader>f', group = '+file' },
      { '<leader>fe', group = '+explore' },
+     { '<leader>fo', group = '+open' },
      { '<leader>F', group = '+format' },
      { '<leader>b', group = '+buffer' },
      { '<leader>c', group = '+copy' },
