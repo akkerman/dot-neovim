@@ -1,12 +1,5 @@
--- Returns the Git root directory or cwd
-local function get_session_root()
-  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-  if vim.v.shell_error == 0 and git_root ~= "" then
-    return git_root
-  end
-  return vim.fn.getcwd()
-end
-
+local options = require("utils").options
+local get_session_root = require("utils").get_git_root_or_cwd
 
 -- vim command to force create a session in the current directory
 local function create_session(session_name)
@@ -21,6 +14,9 @@ local function create_session(session_name)
     session_name = git_dir .. "/" .. session_name
   end
   vim.cmd("mksession! " .. session_name)
+
+  -- Show a notification with the session file path
+  vim.notify("Session file created: " .. session_name, vim.log.levels.INFO, { title = 'Session created' })
 end
 
 -- Initialize Telescope
@@ -53,9 +49,31 @@ local function search_session()
   })
 end
 
+-- Save all named buffers and close unnamed buffers
+local function save_and_clean_buffers()
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].modifiable then
+      local name = vim.api.nvim_buf_get_name(bufnr)
+      if name ~= '' then
+        vim.cmd('silent! write ' .. vim.fn.fnameescape(name)) -- Save the buffer
+      else
+        vim.cmd('bwipeout ' .. bufnr) -- Close unnamed buffers
+      end
+    end
+  end
+end
+
+-- Save buffers, create default session, and quit Vim
+local function save_session_and_quit()
+  save_and_clean_buffers()
+  vim.cmd('SessionCreate')
+  vim.cmd('wqa!')
+end
+
 vim.api.nvim_create_user_command("SessionCreate", function(opts)
   create_session(opts.args)
 end, {nargs = "?"})
+
 vim.api.nvim_create_user_command("SessionCreatePrompt", function()
   vim.fn.inputsave()
   local session_name = vim.fn.input("Session name: ")
@@ -64,7 +82,10 @@ vim.api.nvim_create_user_command("SessionCreatePrompt", function()
 end, {})
 vim.api.nvim_create_user_command("SessionSearch", search_session, {})
 
-vim.keymap.set('n', '<leader>sc', ':SessionCreate<CR>', { noremap = true, silent = true , desc = 'Create default session' })
-vim.keymap.set('n', '<leader>sn', ':SessionCreatePrompt<CR>', { noremap = true, silent = true , desc = 'Create named session with prompt' })
-vim.keymap.set('n', '<leader>ss', ':SessionSearch<CR>', { noremap = true, silent = true , desc = 'Search for session files' })
-vim.keymap.set('n', '<leader>sl', ':SessionSearch<CR>', { noremap = true, silent = true , desc = 'List session files' })
+local map = vim.keymap.set
+
+map('n', '<leader>sc', ':SessionCreate<CR>', options('Create default session'))
+map('n', '<leader>sn', ':SessionCreatePrompt<CR>', options('Create named session with prompt'))
+map('n', '<leader>ss', search_session, options('Search for session files'))
+map('n', '<leader>sl', search_session, options('List session files'))
+map('n', '<leader>sq', save_session_and_quit, options("Save files, create default session, and quit Vim"))

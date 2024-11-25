@@ -1,7 +1,4 @@
-local options = function(desc)
-  return { noremap = true, silent = true, desc = desc }
-end
-
+local options = require("utils").options
 local map = vim.keymap.set
 map('n', '<leader>n', ':set hlsearch!<CR>', { desc = 'Toggle search highlight' })
 map('n', '<leader>e', ":e <C-R>=expand('%:.:h') . '/'<CR>", { desc = 'edit other file in same dir as current' })
