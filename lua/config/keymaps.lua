@@ -39,7 +39,7 @@ local get_visual_selection = function()
   return start_line, start_col, end_line, end_col
 end
 
-map('n', '<leader>fc', function()
+map('n', '<leader>fcp', function()
   -- Copy file path to clipboard
   vim.cmd('let @+ = expand("%:p")')
   -- Show notification with the file name
@@ -47,32 +47,32 @@ map('n', '<leader>fc', function()
 end, { desc = 'Copy file path to clipboard' })
 
 -- Format JSON
-map('n', '<leader>Fj', function()
+map('n', '<leader>ffj', function()
   vim.cmd('silent! %!jq \'.\'')
   vim.bo.filetype = 'json'
   vim.notify('Formatted JSON (pretty print)')
 end, { desc = 'Format JSON (pretty print)' })
 
-map('n', '<leader>FJ', function()
+map('n', '<leader>ffJ', function()
   vim.cmd('silent! %!jq \'.\' -c')
   vim.bo.filetype = 'json'
   vim.notify('Formatted JSON (compact)')
 end, { desc = 'Format JSON (compact)' })
 
 -- Format XML
-map('n', '<leader>Fx', function()
+map('n', '<leader>ffx', function()
   vim.cmd('silent! %!xmllint --format -')
   vim.notify('Formatted XML')
 end, { desc = 'Format XML' })
 
 -- Use silicon for generating images of code
-map('n', '<leader>ci', function()
+map('n', '<leader>fci', function()
   vim.cmd('silent! !silicon %')
   vim.notify('Generated code image (current file)')
 end, { desc = 'Generate code image (current file)' })
 
 -- Generate a code image from a visual selection
-vim.keymap.set('v', '<leader>ci', function()
+vim.keymap.set('v', '<leader>fci', function()
   local start_line, _, end_line, _ = get_visual_selection()
   -- Run the silicon command for the selected range
   vim.cmd(string.format("silent! %d,%dwrite !silicon -l %s", start_line, end_line, vim.bo.filetype))
@@ -80,13 +80,13 @@ vim.keymap.set('v', '<leader>ci', function()
 end, { desc = 'Generate code image (selected)' })
 
 -- Copy file content or selection to clipboard using xclip
-map('n', '<leader>cc', function()
+map('n', '<leader>fcc', function()
   vim.cmd('silent! !xclip -selection clipboard %')
   vim.notify('Copied file content to clipboard')
 end, { desc = 'Copy file content to clipboard' })
 
 -- Copy selection to clipboard using xclip
-vim.keymap.set('v', '<leader>cc', function()
+vim.keymap.set('v', '<leader>fcc', function()
   local start_line, _, end_line, _ = get_visual_selection()
   -- Run the xclip command for the selected range
   vim.cmd(string.format("silent! %d,%dw !xclip -selection clipboard", start_line, end_line))
@@ -94,7 +94,7 @@ vim.keymap.set('v', '<leader>cc', function()
 end, { desc = 'Copy selection to clipboard' })
 
 -- Copy file to ~/Downloads/code
-map('n', '<leader>cp', function()
+map('n', '<leader>fcd', function()
   vim.cmd('silent! !cp % ~/Downloads/code')
   vim.notify('Copied file to ~/Downloads/code')
 end, { desc = 'Copy file to ~/Downloads/code' })
