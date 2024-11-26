@@ -1,15 +1,15 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp", -- LSP integratie met autocomplete
-      "hrsh7th/nvim-cmp",     -- Autocompletion
-      "L3MON4D3/LuaSnip",     -- Snippets
-      "saadparwaiz1/cmp_luasnip" -- Snippet integratie
+      'hrsh7th/cmp-nvim-lsp', -- LSP integratie met autocomplete
+      'hrsh7th/nvim-cmp',     -- Autocompletion
+      'L3MON4D3/LuaSnip',     -- Snippets
+      'saadparwaiz1/cmp_luasnip' -- Snippet integratie
     },
     config = function()
-      local lspconfig = require("lspconfig")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local lspconfig = require('lspconfig')
+      local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
       -- Voeg capabilities voor autocompletion toe
       local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -18,11 +18,25 @@ return {
       lspconfig.ts_ls.setup {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
-          local bufmap = function(mode, lhs, rhs)
-            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true })
+          local bufmap = function(mode, lhs, rhs, desc)
+            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
           end
-          bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-          bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+
+          -- Standard LSP mappings
+          bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', 'Go to definition')
+          bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', 'Show hover information')
+
+          -- Code action mappings
+          bufmap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', 'Show code actions')
+          bufmap('v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', 'Show code actions for selection')
+
+          -- Rename symbol
+          bufmap('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename symbol')
+
+          -- Use TypeScript-tools if installed (e.g. extract function)
+          bufmap('n', '<leader>ce', ':TypescriptExtractFunction<CR>', 'Extract function') -- requires typescript-tools.nvim
+          bufmap('v', '<leader>ce', ':TypescriptExtractFunctionToFile<CR>', 'Extract function to file') -- requires typescript-tools.nvim
+
         end
       }
 
