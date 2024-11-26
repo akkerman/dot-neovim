@@ -18,6 +18,13 @@ opt.undofile = true
 opt.virtualedit = 'block'  -- In visual block mode, allow cursor to move where there is no text
 opt.wrap = false
 
+-- line wrapping behavior
+
+vim.opt.linebreak = true -- Enable linebreak for wrapping at word boundaries
+vim.opt.showbreak = "↳ " -- Symbol to display before wrapped lines
+vim.opt.breakindent = true -- Every wrapped line will continue visually indented
+vim.opt.breakindentopt = "shift:2" -- Wrapped line will be indented by 2 spaces
+
 -- Global scope variable
 
 vim.g.netrw_banner = 0
