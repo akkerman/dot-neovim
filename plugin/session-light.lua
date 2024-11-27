@@ -26,10 +26,14 @@ local action_state = require('telescope.actions.state')
 
 -- Function to search for session files
 local function search_session()
+  local search_command = vim.fn.executable("fd") == 1
+      and { "fd", "--no-ignore", "Session.*\\.vim", "." }
+      or { "find", ".", "-name", "Session*.vim" }
+
   telescope.find_files({
     prompt_title = "Session Files",
     cwd = get_session_root(),
-    find_command = { "find", ".", "-name", "Session*.vim" },
+    find_command = search_command,
     previewer = false, -- Disable the preview window
     attach_mappings = function(prompt_bufnr, map)
       -- Custom action to source the selected session file
