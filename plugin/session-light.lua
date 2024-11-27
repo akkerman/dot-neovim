@@ -1,4 +1,4 @@
-local options = require("utils").options
+local nmap = require("utils").nmap
 local get_session_root = require("utils").get_git_root_or_cwd
 
 -- vim command to force create a session in the current directory
@@ -63,13 +63,34 @@ local function save_and_clean_buffers()
   end
 end
 
--- Save buffers, create default session, and quit Vim
+-- Save buffers, create default session, and quit neovim
 local function save_session_and_quit()
   save_and_clean_buffers()
   vim.cmd('SessionCreate')
   vim.cmd('wqa!')
 end
 
+-- overwrite existing session, or show warning if not in a session
+local function overwrite_session()
+  if vim.v.this_session then
+    vim.cmd('mksession! ' .. vim.fn.fnameescape(vim.v.this_session))
+    vim.notify('Session overwritten: ' .. vim.v.this_session)
+  else
+    vim.notify('Currently not in a session', vim.log.levels.WARN)
+  end
+end
+
+-- reload current sessions, or show warning if not in a session
+local function reload_session()
+  if vim.v.this_session then
+    vim.cmd('source ' .. vim.fn.fnameescape(vim.v.this_session))
+    vim.notify('Session reloaded: ' .. vim.v.this_session)
+  else
+    vim.notify('Currently not in a session', vim.log.levels.WARN)
+  end
+end
+
+-- User command to create a session
 vim.api.nvim_create_user_command("SessionCreate", function(opts)
   create_session(opts.args)
 end, {nargs = "?"})
@@ -82,10 +103,11 @@ vim.api.nvim_create_user_command("SessionCreatePrompt", function()
 end, {})
 vim.api.nvim_create_user_command("SessionSearch", search_session, {})
 
-local map = vim.keymap.set
-
-map('n', '<leader>sc', ':SessionCreate<CR>', options('Create default session'))
-map('n', '<leader>sn', ':SessionCreatePrompt<CR>', options('Create named session with prompt'))
-map('n', '<leader>ss', search_session, options('Search for session files'))
-map('n', '<leader>sl', search_session, options('List session files'))
-map('n', '<leader>sq', save_session_and_quit, options("Save files, create default session, and quit Vim"))
+-- Key mappings
+nmap('<leader>sc', ':SessionCreate<CR>', 'Create default session')
+nmap('<leader>sn', ':SessionCreatePrompt<CR>', 'Create named session with prompt')
+nmap('<leader>ss', search_session, 'Search session files')
+nmap('<leader>sf', search_session, 'Search session files')
+nmap('<leader>sq', save_session_and_quit, "Save files, create default session, and quit Vim")
+nmap('<leader>sw', overwrite_session, 'Overwrite session')
+nmap('<leader>sr', reload_session, 'Reload session')

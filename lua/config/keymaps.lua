@@ -1,13 +1,12 @@
 local options = require("utils").options
+local nmap = require("utils").nmap
 local map = vim.keymap.set
-local nmap = function (key, cmd, desc)
-  map('n', key, cmd, options(desc))
-end
 
 map('n', '<leader>n', ':set hlsearch!<CR>', { desc = 'Toggle search highlight' })
 map('n', '<leader>e', ":e <C-R>=expand('%:.:h') . '/'<CR>", { desc = 'edit other file in same dir as current' })
 map('n', '<leader>gf', ':e <cfile><cr>', { desc = 'Create file under cursor and edit' })
 map('n', '<leader>F=', 'mzgg=G`z', { desc = 'auto-indent entire file' })
+
 nmap('gF', '<C-w>vgf', 'Open file under cursor in vertical split')
 
 -- Open next/previous file in quickfix list
