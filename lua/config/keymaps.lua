@@ -27,6 +27,9 @@ nmap('<C-w>t', ':tab split<CR>', 'Open current window in a new tab')
 nmap('<C-w>z', ':wincmd_<CR>:wincmd|<CR>', 'Zoom current pane')
 nmap('<C-w>N', ':vnew<CR>', 'Create a new vertical split')
 
+-- close buffer without closing pane
+nmap('<leader>bd', ':bp | bd #<CR>', 'Close buffer without closing pane')
+
 map('x', '.', ':normal .<CR>', options('Apply last edit to selected lines'))
 
 
