@@ -14,12 +14,38 @@ return {
     config = function()
       require('lualine').setup {
         options = {
-          -- theme = 'gruvbox',
+          theme = 'gruvbox',
           globalstatus = true,
         },
-        sections = { lualine_a = {
-          { 'mode', fmt = function(str) return str:sub(1,1) end } },
-        },
+        sections = {
+          lualine_a = {{
+            function()
+              local sessionPath = vim.v.this_session
+              if not sessionPath or sessionPath == "" then
+                return " "
+              end
+
+              local filename = vim.fn.fnamemodify(sessionPath, ':t:r')
+
+              if filename == 'Session' then
+                return "default"
+              end
+
+              if not filename:find("^Session%-") then
+                return filename
+              end
+
+              return filename:sub(9)
+            end,
+            -- Optional: Add icons or formatting if needed
+            icon = '',  -- Example icon for sessions
+          }},
+          lualine_b = { 'branch', 'diff' },
+          lualine_c = { 'filename' },
+          lualine_x = {'%=', '%t%m', '%3p'},
+          lualine_y = { 'location' },
+          lualine_z = { 'progress'},
+        }
       }
     end
   }
