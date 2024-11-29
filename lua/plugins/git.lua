@@ -11,6 +11,8 @@ return {
       map('n', '<leader>gS', ':Gwrite<CR>', { desc = 'Git stage this file' })
       map('n', '<leader>gR', ':Gread<CR>', { desc = 'Git revert file' })
       map('n', '<leader>gN', ':Git now<CR>', { desc = 'Git commit all with timestamp' })
+      map('n', '<leader>gd', ':Gvdiffsplit<CR>', { desc = 'Git diff' })
+      map('n', '<leader>gD', ':Gvdiffsplit develop<CR>', { desc = 'Git diff with develop branch' })
     end
   },
 
