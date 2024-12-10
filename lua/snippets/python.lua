@@ -7,24 +7,21 @@ ls.add_snippets("python", {
   s({ trig="aoc", dscr="Create advent of code starting point"}, 
   fmt(
   [[
-# pylint: disable=missing-module-docstring,missing-function-docstring
-# pylint: disable=invalid-name
 import sys
 import string
 
-
 def part_one(lines):
-    """ part one """
+    """Solution to part one."""
     return 'todo'
 
 
 def part_two(lines):
-    """ part two """
+    """Solution to part two."""
     return 'todo'
 
 
 def main():
-    """ main """
+    """Parse input file, pass to puzzle solvers."""
     lines = []
     for line in sys.stdin:
         line = line.strip()
