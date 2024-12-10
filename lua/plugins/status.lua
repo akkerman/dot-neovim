@@ -42,7 +42,7 @@ return {
           }},
           lualine_b = { 'branch', 'diff' },
           lualine_c = { 'filename' },
-          lualine_x = {'%=', '%t%m', '%3p'},
+          lualine_x = { },
           lualine_y = { 'location' },
           lualine_z = { 'progress'},
         }
