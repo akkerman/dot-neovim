@@ -30,11 +30,13 @@ return {
       lspconfig.pyright.setup {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
-          local bufmap = function(mode, lhs, rhs)
-            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true })
+          local bufmap = function(mode, lhs, rhs, desc)
+            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true,  desc = desc })
           end
-          bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-          bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+          bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", 'Go to definition')
+          bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", 'Show hover information')
+          -- Rename symbol
+          bufmap('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename symbol')
         end,
         settings = {
           python = {
