@@ -5,7 +5,7 @@ local map = vim.keymap.set
 map('n', '<leader>n', ':set hlsearch!<CR>', { desc = 'Toggle search highlight' })
 map('n', '<leader>e', ":e <C-R>=expand('%:.:h') . '/'<CR>", { desc = 'edit other file in same dir as current' })
 map('n', '<leader>gf', ':e <cfile><cr>', { desc = 'Create file under cursor and edit' })
-map('n', '<leader>F=', 'mzgg=G`z', { desc = 'auto-indent entire file' })
+map('n', '<leader>ff=', 'mzgg=G`z', { desc = 'auto-indent entire file' })
 
 nmap('gF', '<C-w>vgf', 'Open file under cursor in vertical split')
 
@@ -106,3 +106,20 @@ map('n', '<leader>fcd', function()
   vim.notify('Copied file to ~/Downloads/code')
 end, { desc = 'Copy file to ~/Downloads/code' })
 
+
+-- https://www.youtube.com/watch?v=ooTcnx066Do
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+    vim.cmd.startinsert()
+  end,
+})
+map('n', '<leader>t', function ()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 10)
+end,
+{ desc = 'Toggle terminal' })
