@@ -41,16 +41,18 @@ return { -- shows pending keybinds.
 
     -- Document existing key chains
     spec = {
-     { '<leader>f', group = '+file' },
-     { '<leader>fe', group = '+explore' },
-     { '<leader>fo', group = '+open' },
-     { '<leader>ff', group = '+format' },
-     { '<leader>fc', group = '+copy' },
      { '<leader>b', group = '+buffer' },
      { '<leader>c', group = '+code' },
+     { '<leader>f', group = '+file' },
+     { '<leader>fc', group = '+copy' },
+     { '<leader>fe', group = '+explore' },
+     { '<leader>ff', group = '+format' },
+     { '<leader>fo', group = '+open' },
      { '<leader>g', group = '+git' },
-     { '<leader>gh', group = '+hunk' },
      { '<leader>gb', group = '+blame' },
+     { '<leader>gh', group = '+hunk' },
+     { '<leader>r', group = '+run in tmux' },
+     { '<leader>s',  group = '+session' },
     },
   },
 }
