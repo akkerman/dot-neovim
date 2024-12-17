@@ -58,6 +58,7 @@ return {
           end
           bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
           bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+          vim.bo.commentstring = "# %s"
         end,
       }
 
