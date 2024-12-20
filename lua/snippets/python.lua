@@ -12,8 +12,6 @@ import heapq
 import re
 from collections import deque, defaultdict, Counter
 from functools import lru_cache
-
-
 from utils import perf_timer
 
 def part_one(lines):
@@ -40,7 +38,8 @@ def main():
     print('part_two', part_two(lines))
 
 
-main()
+if __name__ == '__main__':
+    main()
 ]],
   { i(1) },
   { delimiters = "<>" }
