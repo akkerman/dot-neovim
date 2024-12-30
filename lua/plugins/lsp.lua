@@ -5,7 +5,8 @@ return {
       "hrsh7th/cmp-nvim-lsp", -- LSP integratie met autocomplete
       "hrsh7th/nvim-cmp",     -- Autocompletion
       "L3MON4D3/LuaSnip",     -- Snippets
-      "saadparwaiz1/cmp_luasnip" -- Snippet integratie
+      "saadparwaiz1/cmp_luasnip", -- Snippet integratie
+      "stevearc/dressing.nvim", -- popup
     },
     config = function()
       local lspconfig = require("lspconfig")
