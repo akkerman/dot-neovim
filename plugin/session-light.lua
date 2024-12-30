@@ -1,7 +1,8 @@
 local nmap = require("utils").nmap
 local get_session_root = require("utils").get_git_root_or_cwd
 
--- vim command to force create a session in the current directory
+--- vim command to force create a session in the current directory
+--- @param session_name string: The name of the session, to use in the filename
 local function create_session(session_name)
   if session_name == "" or session_name == nil then
     session_name = 'Session.vim'
@@ -24,7 +25,8 @@ local telescope = require('telescope.builtin')
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
 
--- Function to search for session files
+--- Search for session files in git root
+--- falls back to current directory if not in a git repository
 local function search_session()
   local search_command = vim.fn.executable("fd") == 1
       and { "fd", "--no-ignore", "Session.*\\.vim", "." }
@@ -53,7 +55,7 @@ local function search_session()
   })
 end
 
--- Save all named buffers and close unnamed buffers
+--- Save all named buffers and close unnamed buffers
 local function save_and_clean_buffers()
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].modifiable then
@@ -67,14 +69,14 @@ local function save_and_clean_buffers()
   end
 end
 
--- Save buffers, create default session, and quit neovim
+--- Save buffers, create default session, and quit neovim
 local function save_session_and_quit()
   save_and_clean_buffers()
   vim.cmd('SessionCreate')
   vim.cmd('wqa!')
 end
 
--- overwrite existing session, or show warning if not in a session
+--- overwrite existing session, or show warning if not in a session
 local function overwrite_session()
   if vim.v.this_session then
     vim.cmd('mksession! ' .. vim.fn.fnameescape(vim.v.this_session))
@@ -84,7 +86,7 @@ local function overwrite_session()
   end
 end
 
--- reload current sessions, or show warning if not in a session
+--- reload current sessions, or show warning if not in a session
 local function reload_session()
   if vim.v.this_session then
     vim.cmd('source ' .. vim.fn.fnameescape(vim.v.this_session))
@@ -94,7 +96,7 @@ local function reload_session()
   end
 end
 
--- User command to create a session
+--- User command to create a session
 vim.api.nvim_create_user_command("SessionCreate", function(opts)
   create_session(opts.args)
 end, {nargs = "?"})
