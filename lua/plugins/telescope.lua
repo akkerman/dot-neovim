@@ -12,6 +12,7 @@ return {
       map('n', '<leader>.', builtin.find_files, { desc = 'Find files' })
       map('n', '<space><space>', builtin.find_files, { desc = 'Find files'})
       map('n', '<leader>ff', builtin.find_files, { desc = 'Find files'})
+      map('n', '<leader>fr', builtin.oldfiles, { desc = 'Recent files'})
 
       map('n', '<leader>bb', builtin.buffers, { desc = 'Switch buffer'})
 
