@@ -72,7 +72,11 @@ end
 --- Save buffers, create default session, and quit neovim
 local function save_session_and_quit()
   save_and_clean_buffers()
-  vim.cmd('SessionCreate')
+  if vim.v.this_session then
+    vim.cmd('mksession! ' .. vim.fn.fnameescape(vim.v.this_session))
+  else
+    vim.cmd('SessionCreate')
+  end
   vim.cmd('wqa!')
 end
 
@@ -114,6 +118,6 @@ nmap('<leader>sc', ':SessionCreate<CR>', 'Create default session')
 nmap('<leader>sn', ':SessionCreatePrompt<CR>', 'Create named session with prompt')
 nmap('<leader>ss', search_session, 'Search session files')
 nmap('<leader>sf', search_session, 'Search session files')
-nmap('<leader>sq', save_session_and_quit, "Save files, create default session, and quit Vim")
+nmap('<leader>sq', save_session_and_quit, "Save files, save current or create default session, and quit Vim")
 nmap('<leader>sw', overwrite_session, 'Overwrite session')
 nmap('<leader>sr', reload_session, 'Reload session')
