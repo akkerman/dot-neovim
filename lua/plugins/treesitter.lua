@@ -27,7 +27,7 @@ return {
         modules = {},
         highlight = {
           enable = true,  -- Zet syntax highlighting aan
-          additional_vim_regex_highlighting = false,
+          additional_vim_regex_highlighting = true,
         },
 
         textobjects = {
