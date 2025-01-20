@@ -29,3 +29,9 @@ vim.opt.breakindentopt = "shift:2" -- Wrapped line will be indented by 2 spaces
 
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3 -- Tree style
+
+-- neovide
+if vim.g.neovide then
+  opt.guifont = { "Source Code Pro", ":h8" }
+  vim.g.neovide_cursor_animation_length = 0
+end
