@@ -2,7 +2,7 @@ return {
   {
   'tpope/vim-projectionist',
   config = function() 
-    map = vim.keymap.set
+    local map = vim.keymap.set
 
     map("n", "<c-W>a", ":AV<CR>", { desc = "Open alternate file vertically to the left" })
     map("n", "<leader>fa", ":AV<CR>", { desc = "Open alternate file vertically to the left" })

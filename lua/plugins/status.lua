@@ -6,6 +6,9 @@ return {
       vim.g.taboo_tab_format = ' %m%I%F'
       vim.g.taboo_renamed_tab_format = ' %m%I%l'
       vim.g.taboo_modified_tab_flag = ''
+
+      local map = vim.keymap.set
+      map("n", "<leader>tr", ":TabooRename<CR>", { desc = "Rename tab" })
     end
   },
   {

@@ -1,3 +1,4 @@
+local map = vim.keymap.set
 return {
   -- Git integration
   {

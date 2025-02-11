@@ -1,4 +1,5 @@
 local M = {}
+local map = vim.keymap.set
 
 --- @param desc string -- Descripton of the keymap
 --- @return table -- The options with noremap, silent and desc
