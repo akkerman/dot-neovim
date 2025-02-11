@@ -47,6 +47,8 @@ return {
       map('n', '<leader>ghr', ':Gitsigns reset_hunk<CR>', { desc = 'Reset Git hunk' })
       map('n', '<leader>ghn', ':Gitsigns next_hunk<CR>', { desc = 'Next Git hunk' })
       map('n', '<leader>ghP', ':Gitsigns prev_hunk<CR>', { desc = 'Previous Git hunk' })
+      map('n', ']g', ':Gitsigns next_hunk<CR>', { desc = 'Next Git hunk' })
+      map('n', '[g', ':Gitsigns prev_hunk<CR>', { desc = 'Previous Git hunk' })
 
       -- Blame Command
       map('n', '<leader>gbl', ':Gitsigns blame_line<CR>', { desc = 'Blame Git line' })
