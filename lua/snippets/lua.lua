@@ -6,9 +6,9 @@ local i = ls.insert_node
 ls.add_snippets("lua", {
   -- The same equation snippet, using LuaSnip's fmt function.
   -- The snippet is not shorter, but it is more *human-readable*.
-  s({ trig="aoc", dscr="Create advent of code starting point"}, 
-  fmt(
-  [[
+  s({ trig = "aoc", dscr = "Create advent of code starting point" },
+    fmt(
+      [[
   function partOne (lines)
     return 'todo'
   end
@@ -28,8 +28,8 @@ ls.add_snippets("lua", {
   end
   main()
   ]],
-  { i(1) },
-  { delimiters = "<>" }
-  )
+      { i(1) },
+      { delimiters = "<>" }
+    )
   ),
 })

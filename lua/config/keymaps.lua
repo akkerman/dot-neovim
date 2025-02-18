@@ -10,10 +10,10 @@ map('n', '<leader>ff=', 'mzgg=G`z', { desc = 'auto-indent entire file' })
 nmap('gF', '<C-w>vgf', 'Open file under cursor in vertical split')
 
 -- Open next/previous file in quickfix list
-nmap('<Up>', ':cprevious<CR>', 'Previous quickfix item' )
+nmap('<Up>', ':cprevious<CR>', 'Previous quickfix item')
 nmap('<Down>', ':cnext<CR>', 'Next quickfix item')
 nmap('<Left>', ':cpfile<CR>', 'Previous file in quickfix list')
-nmap('<Right>', ':cnfile<CR>','Next file in quickfix list')
+nmap('<Right>', ':cnfile<CR>', 'Next file in quickfix list')
 
 -- Open in other editor
 nmap('<leader>foc', ':!code % &disown<CR>', 'Open the current file in VSCode')
@@ -116,10 +116,10 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.cmd.startinsert()
   end,
 })
-map('n', '<leader>t', function ()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  vim.cmd.wincmd("J")
-  vim.api.nvim_win_set_height(0, 10)
-end,
-{ desc = 'Toggle terminal' })
+map('n', '<leader>t', function()
+    vim.cmd.vnew()
+    vim.cmd.term()
+    vim.cmd.wincmd("J")
+    vim.api.nvim_win_set_height(0, 10)
+  end,
+  { desc = 'Toggle terminal' })

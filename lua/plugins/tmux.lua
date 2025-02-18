@@ -12,7 +12,7 @@ return {
   {
     'jpalardy/vim-slime',
     lazy = false,
-    config = function ()
+    config = function()
       vim.g.slime_target = "tmux"
     end
 

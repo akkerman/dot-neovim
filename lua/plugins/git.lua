@@ -37,7 +37,7 @@ return {
     'lewis6991/gitsigns.nvim',
     event = 'BufRead',
     config = function()
-      require('gitsigns').setup ()
+      require('gitsigns').setup()
 
       -- Git Signs Toggles
       map('n', '<leader>gt', ':Gitsigns toggle_signs<CR>', { desc = 'Toggle Git signs' })

@@ -15,7 +15,7 @@ opt.smartcase = true
 opt.smartcase = true
 opt.swapfile = false
 opt.undofile = true
-opt.virtualedit = 'block'  -- In visual block mode, allow cursor to move where there is no text
+opt.virtualedit = 'block' -- In visual block mode, allow cursor to move where there is no text
 opt.wrap = false
 
 -- line wrapping behavior

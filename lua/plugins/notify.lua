@@ -14,12 +14,12 @@ return {
 
     -- Configure nvim-notify
     notify.setup({
-      stages = "static", -- Use static animations (no movement)
-      timeout = 3000,    -- Notifications last for 3 seconds
+      stages = "static",             -- Use static animations (no movement)
+      timeout = 3000,                -- Notifications last for 3 seconds
       background_colour = "#282828", -- Gruvbox background
-      render = "default", -- Default rendering style
-      top_down = false,   -- Stack notifications from bottom to top
-      fps = 30,           -- Frames per second for animations
+      render = "default",            -- Default rendering style
+      top_down = false,              -- Stack notifications from bottom to top
+      fps = 30,                      -- Frames per second for animations
       on_open = function(win)
         -- Place the notification at the bottom-right corner
         vim.api.nvim_win_set_config(win, {
@@ -32,8 +32,8 @@ return {
       -- Icons matching Gruvbox colors
       icons = {
         ERROR = "", -- Symbol for error
-        WARN = "",  -- Symbol for warning
-        INFO = "",  -- Symbol for info
+        WARN = "", -- Symbol for warning
+        INFO = "", -- Symbol for info
         DEBUG = "", -- Symbol for debug
         TRACE = "✎", -- Symbol for trace
       },

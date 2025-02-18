@@ -20,7 +20,7 @@ return {
           globalstatus = true,
         },
         sections = {
-          lualine_a = {{
+          lualine_a = { {
             function()
               local sessionPath = vim.v.this_session
               if not sessionPath or sessionPath == "" then
@@ -40,13 +40,13 @@ return {
               return filename:sub(9)
             end,
             -- Optional: Add icons or formatting if needed
-            icon = '',  -- Example icon for sessions
-          }},
+            icon = '', -- Example icon for sessions
+          } },
           lualine_b = { 'branch', 'diff' },
           lualine_c = { 'filename' },
-          lualine_x = { },
+          lualine_x = {},
           lualine_y = { 'location' },
-          lualine_z = { 'progress'},
+          lualine_z = { 'progress' },
         }
       }
     end

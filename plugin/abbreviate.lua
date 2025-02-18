@@ -19,8 +19,8 @@ vim.cmd([[
 ]])
 
 -- code snippets
-vim.cmd([[ 
-  iabbrev edl // eslint-disable-line 
+vim.cmd([[
+  iabbrev edl // eslint-disable-line
 ]])
 
 -- command-line mode

@@ -16,8 +16,7 @@ function M.get_git_root_or_cwd()
   return vim.fn.getcwd()
 end
 
-
-function M.nmap (key, cmd, desc)
+function M.nmap(key, cmd, desc)
   map('n', key, cmd, M.options(desc))
 end
 

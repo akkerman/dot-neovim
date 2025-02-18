@@ -4,7 +4,7 @@ return {
 		"ellisonleao/gruvbox.nvim",
 		lazy = false,
 		priority = 1000,
-		config = function ()
+		config = function()
 			if colors == "gruvbox" then
 				vim.o.background = "dark"
 				vim.cmd([[colorscheme gruvbox]])
@@ -26,7 +26,7 @@ return {
 		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
-		config = function ()
+		config = function()
 			if colors == "gruvbox-material" then
 				vim.o.background = "dark"
 				vim.cmd([[colorscheme gruvbox-material]])

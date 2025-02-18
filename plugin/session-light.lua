@@ -63,7 +63,7 @@ local function save_and_clean_buffers()
       if name ~= '' then
         vim.cmd('silent! write ' .. vim.fn.fnameescape(name)) -- Save the buffer
       else
-        vim.cmd('bwipeout ' .. bufnr) -- Close unnamed buffers
+        vim.cmd('bwipeout ' .. bufnr)                         -- Close unnamed buffers
       end
     end
   end
@@ -103,7 +103,7 @@ end
 --- User command to create a session
 vim.api.nvim_create_user_command("SessionCreate", function(opts)
   create_session(opts.args)
-end, {nargs = "?"})
+end, { nargs = "?" })
 
 vim.api.nvim_create_user_command("SessionCreatePrompt", function()
   vim.fn.inputsave()

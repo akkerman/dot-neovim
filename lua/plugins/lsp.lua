@@ -2,11 +2,11 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp", -- LSP integratie met autocomplete
-      "hrsh7th/nvim-cmp",     -- Autocompletion
-      "L3MON4D3/LuaSnip",     -- Snippets
+      "hrsh7th/cmp-nvim-lsp",     -- LSP integratie met autocomplete
+      "hrsh7th/nvim-cmp",         -- Autocompletion
+      "L3MON4D3/LuaSnip",         -- Snippets
       "saadparwaiz1/cmp_luasnip", -- Snippet integratie
-      "stevearc/dressing.nvim", -- popup
+      "stevearc/dressing.nvim",   -- popup
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -20,7 +20,7 @@ return {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
           local bufmap = function(mode, lhs, rhs, desc)
-            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true , desc=desc})
+            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
           end
           bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition")
           bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover information")
@@ -33,7 +33,7 @@ return {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
           local bufmap = function(mode, lhs, rhs, desc)
-            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true,  desc = desc })
+            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
           end
           bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", 'Go to definition')
           bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", 'Show hover information')
@@ -55,7 +55,7 @@ return {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
           local bufmap = function(mode, lhs, rhs, desc)
-            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc=desc })
+            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
           end
           bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition")
           bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover information")
@@ -127,13 +127,12 @@ return {
       lspconfig.hls.setup {
         on_attach = function(client, bufnr)
           local bufmap = function(mode, lhs, rhs, desc)
-            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc=desc })
+            vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
           end
           bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition")
           bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover information")
         end,
       }
-
     end -- end of lsp config
   }
 
