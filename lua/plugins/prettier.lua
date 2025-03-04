@@ -10,12 +10,18 @@ return {
         json = { "prettierd" },
         yaml = { "prettierd" },
         markdown = { "prettierd" },
-        lua = { "stylua" },
+        lua = { "custom_stylua" },
+      },
+      formatters = {
+        custom_stylua = {
+          command = "stylua",
+          args = { "--indent-type", "Spaces", "--indent-width", "2", "$FILENAME" },
+        },
       },
       format_on_save = {
         timeout_ms = 500,
         lsp_fallback = false,
       },
     },
-  }
+  },
 }
