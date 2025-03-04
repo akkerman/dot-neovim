@@ -2,7 +2,7 @@ return {
   "hrsh7th/nvim-cmp",
   config = function()
     local cmp = require("cmp")
-    cmp.setup {
+    cmp.setup({
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body)
@@ -16,6 +16,6 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
       },
-    }
-  end
+    })
+  end,
 }

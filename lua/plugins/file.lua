@@ -1,5 +1,5 @@
 return {
-  'stevearc/oil.nvim',
+  "stevearc/oil.nvim",
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {},
@@ -9,6 +9,6 @@ return {
   config = function()
     require("oil").setup()
     local map = vim.keymap.set
-    map('n', '<leader>fep', ':Oil<CR>', { desc = 'Open parent directory' })
+    map("n", "<leader>fep", ":Oil<CR>", { desc = "Open parent directory" })
   end,
 }

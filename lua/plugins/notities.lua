@@ -3,19 +3,21 @@ return {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
   {
     "godlygeek/tabular",
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    lazy = true,     -- Recommended
+    lazy = true, -- Recommended
     ft = "markdown", -- If you decide to lazy-load anyway
 
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
-    }
-  }
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
 }

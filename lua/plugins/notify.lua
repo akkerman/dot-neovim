@@ -6,26 +6,26 @@ return {
     -- Set gruvbox colors for notifications
     local gruvbox_colors = {
       ERROR = "#fb4934", -- Red
-      WARN = "#fabd2f",  -- Yellow
-      INFO = "#83a598",  -- Blue
+      WARN = "#fabd2f", -- Yellow
+      INFO = "#83a598", -- Blue
       DEBUG = "#8ec07c", -- Green
       TRACE = "#d3869b", -- Purple
     }
 
     -- Configure nvim-notify
     notify.setup({
-      stages = "static",             -- Use static animations (no movement)
-      timeout = 3000,                -- Notifications last for 3 seconds
+      stages = "static", -- Use static animations (no movement)
+      timeout = 3000, -- Notifications last for 3 seconds
       background_colour = "#282828", -- Gruvbox background
-      render = "default",            -- Default rendering style
-      top_down = false,              -- Stack notifications from bottom to top
-      fps = 30,                      -- Frames per second for animations
+      render = "default", -- Default rendering style
+      top_down = false, -- Stack notifications from bottom to top
+      fps = 30, -- Frames per second for animations
       on_open = function(win)
         -- Place the notification at the bottom-right corner
         vim.api.nvim_win_set_config(win, {
           relative = "editor",
-          anchor = "SE",           -- Anchor to the bottom-right corner
-          row = vim.o.lines - 2,   -- Bottom of the editor (adjusted for status line)
+          anchor = "SE", -- Anchor to the bottom-right corner
+          row = vim.o.lines - 2, -- Bottom of the editor (adjusted for status line)
           col = vim.o.columns - 2, -- Far-right of the editor
         })
       end,

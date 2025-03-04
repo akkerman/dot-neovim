@@ -10,11 +10,10 @@ return {
   --   end
   -- },
   {
-    'jpalardy/vim-slime',
+    "jpalardy/vim-slime",
     lazy = false,
     config = function()
       vim.g.slime_target = "tmux"
-    end
-
-  }
+    end,
+  },
 }

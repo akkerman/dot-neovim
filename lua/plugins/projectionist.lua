@@ -1,6 +1,6 @@
 return {
   {
-    'tpope/vim-projectionist',
+    "tpope/vim-projectionist",
     config = function()
       local map = vim.keymap.set
 
@@ -11,6 +11,6 @@ return {
       map("n", "<leader>fA", ":bo :AV<CR>", { desc = "Open alternate file vertically to the right" })
       map("n", "<c-W>i", ":sp %:p:h/index.js<CR>", { desc = "Open index.js in a new split" })
       map("n", "<leader>fi", ":sp %:p:h/index.js<CR>", { desc = "Open index.js in a new split" })
-    end
+    end,
   },
 }
