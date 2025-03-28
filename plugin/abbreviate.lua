@@ -16,6 +16,10 @@ vim.cmd([[
   iabbrev Retreive Retrieve
   iabbrev briks bricks
   iabbrev brik brick
+  iabbrev retreive retrieve
+  iabbrev Retreive Retrieve
+  iabbrev retreived retrieved
+  iabbrev Retreived Retrieved
 ]])
 
 -- code snippets
