@@ -15,4 +15,4 @@ function! HaskellModuleSection(...)
     \      . "\n"
 endfunction
 
-nmap <silent> --s "=HaskellModuleSection()<CR>gp
+"nmap <silent> --s "=HaskellModuleSection()<CR>gp
