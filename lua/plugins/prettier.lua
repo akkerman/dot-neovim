@@ -3,6 +3,7 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
+        -- npm install -g @fsouza/prettierd
         javascript = { "prettierd" },
         javascriptreact = { "prettierd" },
         typescript = { "prettierd" },
@@ -14,7 +15,7 @@ return {
       },
       formatters = {
         custom_stylua = {
-          command = "stylua",
+          command = "stylua", -- paru -S stylua
           args = { "--indent-type", "Spaces", "--indent-width", "2", "$FILENAME" },
         },
       },
