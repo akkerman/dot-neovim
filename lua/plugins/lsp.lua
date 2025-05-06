@@ -15,6 +15,12 @@ return {
       -- Voeg capabilities voor autocompletion toe
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
+
+      vim.diagnostic.config({
+        virtual_text = true,
+      })
+
+
       -- Configureer TypeScript (ts_ls)
       lspconfig.ts_ls.setup({
         capabilities = capabilities,

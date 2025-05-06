@@ -120,3 +120,5 @@ map("n", "<leader>t", function()
   vim.cmd.wincmd("J")
   vim.api.nvim_win_set_height(0, 10)
 end, { desc = "Toggle terminal" })
+
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
