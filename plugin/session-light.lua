@@ -1,23 +1,54 @@
 local nmap = require("utils").nmap
 local get_session_root = require("utils").get_git_root_or_cwd
+local get_git_branch_name = require("utils").get_git_branch_name
+
 
 --- vim command to force create a session in the current directory
 --- @param session_name string: The name of the session, to use in the filename
 local function create_session(session_name)
-  if session_name == "" or session_name == nil then
-    session_name = "Session.vim"
-  else
-    session_name = "Session-" .. session_name .. ".vim"
-  end
-  -- Check if we are in a git repository
-  local git_dir = get_session_root()
-  if git_dir ~= "" then
-    session_name = git_dir .. "/" .. session_name
-  end
-  vim.cmd("mksession! " .. session_name)
+  local root = get_session_root()
+  local name = session_name
 
-  -- Show a notification with the session file path
-  vim.notify("Session file created: " .. session_name, vim.log.levels.INFO, { title = "Session created" })
+  if not name or name == "" then
+    local branch = get_git_branch_name()
+    if branch then
+      name = branch
+    end
+  end
+
+  local filename = name and ("Session-" .. name .. ".vim") or "Session.vim"
+  local session_path = root .. "/" .. filename
+
+  vim.cmd("mksession! " .. vim.fn.fnameescape(session_path))
+  vim.notify("Session file created: " .. session_path, vim.log.levels.INFO, { title = "Session created" })
+end
+
+--- Source a session file from the session root
+--- @param session_name string: The name of the session, to use in the filename
+local function source_session(session_name)
+  local root = get_session_root()
+  local paths_to_try = {}
+
+  if session_name and session_name ~= "" then
+    table.insert(paths_to_try, root .. "/Session-" .. session_name .. ".vim")
+  else
+    local branch_name = get_git_branch_name()
+    if branch_name then
+      table.insert(paths_to_try, root .. "/Session-" .. branch_name .. ".vim")
+    end
+    table.insert(paths_to_try, root .. "/Session.vim")
+  end
+
+  for _, path in ipairs(paths_to_try) do
+    if vim.fn.filereadable(path) == 1 then
+      vim.cmd("source " .. vim.fn.fnameescape(path))
+      vim.notify("Session loaded: " .. path, vim.log.levels.INFO, { title = "Session loaded" })
+      return true
+    end
+  end
+
+  vim.notify("No session file found", vim.log.levels.WARN, { title = "Session load failed" })
+  return false
 end
 
 -- Initialize Telescope
@@ -99,9 +130,35 @@ local function reload_session()
   end
 end
 
+--- create or load a session based on the current git branch
+local function create_or_source_branch_session()
+  -- Get the current branch name
+  local branch = get_git_branch_name()
+  if not branch then
+    vim.notify("Not inside a Git repository", vim.log.levels.WARN)
+    return
+  end
+
+  local loaded = false
+
+  if branch then
+    loaded = source_session(branch)
+  end
+
+  if not loaded then
+    create_session(branch)
+  end
+end
+
+
 --- User command to create a session
 vim.api.nvim_create_user_command("SessionCreate", function(opts)
   create_session(opts.args)
+end, { nargs = "?" })
+---
+--- User command to load a session
+vim.api.nvim_create_user_command("SessionLoad", function(opts)
+  source_session(opts.args)
 end, { nargs = "?" })
 
 vim.api.nvim_create_user_command("SessionCreatePrompt", function()
@@ -120,3 +177,4 @@ nmap("<leader>sf", search_session, "Search session files")
 nmap("<leader>sq", save_session_and_quit, "Save files, save current or create default session, and quit Vim")
 nmap("<leader>sw", overwrite_session, "Overwrite session")
 nmap("<leader>sr", reload_session, "Reload session")
+nmap("<leader>sb", create_or_source_branch_session, "Create or load session based on current git branch")
