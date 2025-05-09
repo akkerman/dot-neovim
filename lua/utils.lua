@@ -20,4 +20,17 @@ function M.nmap(key, cmd, desc)
   map("n", key, cmd, M.options(desc))
 end
 
+
+--- @return string|nil branch the current git branch name
+function M.get_git_branch_name()
+  local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD"):gsub("\n", "")
+  if branch == "" or branch == "HEAD" then
+    return nil
+  end
+  return branch:match("([^/]+)$") or branch
+end
+
+
 return M
+
+
