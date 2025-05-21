@@ -1,3 +1,6 @@
+local get_dir = require('utils').get_git_root_or_cwd
+local nmap = require('utils').nmap
+
 return {
   "stevearc/oil.nvim",
   ---@module 'oil'
@@ -8,7 +11,10 @@ return {
   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
   config = function()
     require("oil").setup()
-    local map = vim.keymap.set
-    map("n", "<leader>fep", ":Oil<CR>", { desc = "Open parent directory" })
+    nmap("<leader>fep", ":Oil<CR>", "Open parent directory")
+    nmap("<leader>fer", function()
+      local dir = get_dir()
+      require("oil").open(dir)
+    end, "Open git root directory")
   end,
 }
