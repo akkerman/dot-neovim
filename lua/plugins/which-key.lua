@@ -52,6 +52,7 @@ return { -- shows pending keybinds.
       { "<leader>g", group = "+git" },
       { "<leader>gb", group = "+blame" },
       { "<leader>gh", group = "+hunk" },
+      { "<leader>l", group = "+line" },
       { "<leader>r", group = "+run in tmux" },
       { "<leader>s", group = "+session" },
     },
