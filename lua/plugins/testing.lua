@@ -66,13 +66,25 @@ return {
       })
 
       -- keybindings for coverage
-      map("n", "<leader>cc", function()
+      map("n", "<leader>ccl", function()
         coverage.load(true)
       end, { desc = "Load coverage" })
 
-      map("n", "<leader>cs", function()
+      map("n", "<leader>ccs", function()
         coverage.toggle()
       end, { desc = "Toggle coverage signs" })
+
+      map("n", "<leader>ccS", function()
+        coverage.summary()
+      end, { desc = "Show summary" })
+
+      map("n", "]c", function()
+        coverage.jump_next("uncovered")
+      end, { desc = "Jump to next uncovered line" })
+
+      map("n", "[c", function()
+        coverage.jump_prev("uncovered")
+      end, { desc = "Jump to previous uncovered line" })
     end,
   },
 }
