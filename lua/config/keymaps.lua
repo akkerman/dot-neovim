@@ -121,4 +121,16 @@ map("n", "<leader>t", function()
   vim.api.nvim_win_set_height(0, 10)
 end, { desc = "Toggle terminal" })
 
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
+map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
+
+
+-- set filtype to javascript
+map("n", "<leader>ftj", function()
+  vim.bo.filetype = "javascript"
+end, { desc = "javascript" })
+map("n", "<leader>ftm", function()
+  vim.bo.filetype = "markdown"
+end, { desc = "markdown" })
+map("n", "<leader>ftt", function()
+  vim.bo.filetype = "text"
+end, { desc = "text" })

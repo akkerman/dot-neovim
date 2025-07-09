@@ -33,4 +33,6 @@ vim.cmd([[
   cnoreabbrev lcd. lcd %:p:h:h
   cnoreabbrev cdg cd `git rev-parse --show-toplevel`
   cnoreabbrev lcdg lcd `git rev-parse --show-toplevel`
+  cnoreabbrev Tab TabooRename
 ]])
+

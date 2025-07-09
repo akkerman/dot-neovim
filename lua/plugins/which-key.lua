@@ -49,6 +49,7 @@ return { -- shows pending keybinds.
       { "<leader>fc", group = "+copy" },
       { "<leader>fe", group = "+explore" },
       { "<leader>ff", group = "+format" },
+      { "<leader>ft", group = "+filetype"},
       { "<leader>fo", group = "+open" },
       { "<leader>g", group = "+git" },
       { "<leader>gb", group = "+blame" },

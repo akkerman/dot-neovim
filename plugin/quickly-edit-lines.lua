@@ -51,3 +51,8 @@ end, { desc = "Delete empty lines" })
 vim.keymap.set("n", "<leader>lc", function()
   vim.cmd([[silent! %s/\v(\n\s*){2,}/\r\r/g]])
 end, { desc = "Condense empty lines to one" })
+
+-- Vervang \n door new lines
+vim.keymap.set("n", "<leader>ln", function() 
+  vim.cmd([[silent! s/\\n/\r/g]])
+end, { desc = "Replace \n with newline" })
