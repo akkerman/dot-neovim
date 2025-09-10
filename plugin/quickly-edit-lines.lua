@@ -15,7 +15,9 @@ end, { desc = "Keep only lines with word under cursor" })
 local function get_visual_selection()
   local _, ls_row, ls_col = unpack(vim.fn.getpos("'<"))
   local _, le_row, le_col = unpack(vim.fn.getpos("'>"))
-  if ls_row ~= le_row then return nil end -- één regel selecties alleen
+  if ls_row ~= le_row then
+    return nil
+  end -- één regel selecties alleen
   local line = vim.fn.getline(ls_row)
   return string.sub(line, ls_col, le_col)
 end
@@ -53,6 +55,9 @@ vim.keymap.set("n", "<leader>lc", function()
 end, { desc = "Condense empty lines to one" })
 
 -- Vervang \n door new lines
-vim.keymap.set("n", "<leader>ln", function() 
+vim.keymap.set("n", "<leader>ln", function()
   vim.cmd([[silent! s/\\n/\r/g]])
 end, { desc = "Replace \n with newline" })
+
+-- sort lines in visuele selectie
+vim.keymap.set("v", "<leader>ls", ":sort<CR>", { desc = "Sort lines in visual selection" })
