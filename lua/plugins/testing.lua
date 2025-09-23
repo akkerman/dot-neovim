@@ -16,12 +16,17 @@ return {
       -- testing
       local neotest = require("neotest")
       neotest.setup({
+        log_level = vim.log.levels.DEBUG,
+        discovery = {
+          enabled = false,
+        },
         adapters = {
           require("neotest-jest")({
             jestCommand = "npm test --", -- Change if using yarn/pnpm
             jestConfigFile = "jest.config.js",
+            jest_test_discovery = false,
             env = { CI = true },
-            cwd = function(path)
+            cwd = function()
               return vim.fn.getcwd()
             end,
           }),
