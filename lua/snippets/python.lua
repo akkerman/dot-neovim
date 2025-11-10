@@ -34,6 +34,8 @@ def main():
        	<>
         lines.append(line)
 
+    # first: str = next(fileinput.input()).strip()
+
     print('part_one', part_one(lines))
 
     print('part_two', part_two(lines))
