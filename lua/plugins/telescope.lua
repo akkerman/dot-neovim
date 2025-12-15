@@ -9,7 +9,6 @@ return {
       local map = vim.keymap.set
       map("n", "<leader>/", builtin.live_grep, { desc = "Find in files" })
 
-      map("n", "<leader>.", builtin.find_files, { desc = "Find files" })
       map("n", "<space><space>", builtin.find_files, { desc = "Find files" })
       map("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
       map("n", "<leader>fr", builtin.oldfiles, { desc = "Recent files" })

@@ -4,7 +4,7 @@ local map = vim.keymap.set
 
 map("n", "<leader>n", ":set hlsearch!<CR>", { desc = "Toggle search highlight" })
 map("n", "<leader>e", ":e <C-R>=expand('%:.:h') . '/'<CR>", { desc = "edit other file in same dir as current" })
-map("n", "<leader>gf", ":e <cfile><cr>", { desc = "Create file under cursor and edit" })
+map("n", "<leader>gf", ":e %:h/<cfile><cr>", { desc = "Create file under cursor and edit" })
 map("n", "<leader>ff=", "mzgg=G`z", { desc = "auto-indent entire file" })
 map("n", "<leader>qq", ":qa!<CR>", { desc = "Quit nvim without save" })
 

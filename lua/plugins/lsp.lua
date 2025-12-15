@@ -22,7 +22,7 @@ return {
         bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition")
         bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover information")
         bufmap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename symbol")
-        bufmap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action")
+        bufmap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action")
       end
 
       vim.diagnostic.config({
@@ -37,14 +37,14 @@ return {
 
       -- Configure ESLint Language Server (vscode-eslint)
       -- paru -S vscode-langservers-extracted
-      vim.lsp.config("eslint", {
-        on_attach = function(client, bufnr)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = "EslintFixAll",
-          })
-        end,
-      })
+      -- vim.lsp.config("eslint", {
+      --   on_attach = function(client, bufnr)
+      --     vim.api.nvim_create_autocmd("BufWritePre", {
+      --       buffer = bufnr,
+      --       command = "EslintFixAll",
+      --     })
+      --   end,
+      -- })
 
       -- Configureer Python (pyright)
       vim.lsp.config("pyright", {
