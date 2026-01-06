@@ -7,9 +7,11 @@ local rep = require("luasnip.extras").rep
 
 -- Helpers
 local function to_kebab_case(str)
-  return str:gsub("%u", function(c)
-    return "-" .. c:lower()
-  end):gsub("^-", "")
+  return str
+    :gsub("%u", function(c)
+      return "-" .. c:lower()
+    end)
+    :gsub("^-", "")
 end
 
 local function capitalize(str)
@@ -17,7 +19,10 @@ local function capitalize(str)
 end
 
 return {
-  s("maketest", fmt([[
+  s(
+    "maketest",
+    fmt(
+      [[
     const make{Pascal} = require('./{kebab}')
 
     describe('{kebab}', () => {{
@@ -39,21 +44,27 @@ return {
 
       it.todo('should have tests')
     }})
-  ]], {
-    -- User types one base name (camelCase)
-    camel = i(1, "functionUnderTest"),
+  ]],
+      {
+        -- User types one base name (camelCase)
+        camel = i(1, "functionUnderTest"),
 
-    -- Derived transformations
-    Pascal = f(function(args)
-      return capitalize(args[1][1])
-    end, {1}),
+        -- Derived transformations
+        Pascal = f(function(args)
+          return capitalize(args[1][1])
+        end, { 1 }),
 
-    kebab = f(function(args)
-      return to_kebab_case(args[1][1])
-    end, {1}),
-    camel_ref = rep(1),
-  })),
-  s("makefn", fmt([[
+        kebab = f(function(args)
+          return to_kebab_case(args[1][1])
+        end, { 1 }),
+        camel_ref = rep(1),
+      }
+    )
+  ),
+  s(
+    "makefn",
+    fmt(
+      [[
     module.exports = make{Pascal}
 
     /**
@@ -72,11 +83,14 @@ return {
         // TODO: implement function
       }}
     }}
-  ]], {
-    camel = i(1, "theFunction"),
-    Pascal = f(function(args)
-      return capitalize(args[1][1])
-    end, {1}),
-    camel_ref = rep(1),
-  })),
+  ]],
+      {
+        camel = i(1, "theFunction"),
+        Pascal = f(function(args)
+          return capitalize(args[1][1])
+        end, { 1 }),
+        camel_ref = rep(1),
+      }
+    )
+  ),
 }

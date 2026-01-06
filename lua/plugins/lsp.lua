@@ -37,14 +37,16 @@ return {
 
       -- Configure ESLint Language Server (vscode-eslint)
       -- paru -S vscode-langservers-extracted
-      -- vim.lsp.config("eslint", {
-      --   on_attach = function(client, bufnr)
-      --     vim.api.nvim_create_autocmd("BufWritePre", {
-      --       buffer = bufnr,
-      --       command = "EslintFixAll",
-      --     })
-      --   end,
-      -- })
+      vim.lsp.config("eslint", {
+        -- on_attach = function(client, bufnr)
+        --   vim.api.nvim_create_autocmd("BufWritePre", {
+        --     buffer = bufnr,
+        --     command = "EslintFixAll",
+        --   })
+        -- end,
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
 
       -- Configureer Python (pyright)
       vim.lsp.config("pyright", {
