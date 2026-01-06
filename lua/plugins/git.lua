@@ -18,21 +18,6 @@ return {
     end,
   },
 
-  -- interactive Git UI
-  {
-    "kdheepak/lazygit.nvim",
-    event = "VeryLazy", -- Only load when necessary
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      -- Lazygit mappings
-      vim.api.nvim_set_keymap("n", "<Leader>gl", ":LazyGit<CR>", { noremap = true, silent = true })
-
-      -- You can also customize the lazygit command or key bindings as per your needs
-      -- For example, if you want lazygit to open a split window:
-      -- vim.cmd([[ let g:lazygit_use_neovim_popup = 1 ]])
-    end,
-  },
-
   -- Git signs in the sign column
   {
     "lewis6991/gitsigns.nvim",
