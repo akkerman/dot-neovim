@@ -15,6 +15,7 @@ return {
       map("n", "<leader>gL", ":Git log -- %<CR>", { desc = "Git log of this file" })
       map("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "Git diff" })
       map("n", "<leader>gD", ":Gvdiffsplit develop<CR>", { desc = "Git diff with develop branch" })
+      map("n", "<leader>gM", ":Gvdiffsplit main<CR>", { desc = "Git diff with main branch" })
     end,
   },
 
