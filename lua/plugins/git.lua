@@ -16,6 +16,8 @@ return {
       map("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "Git diff" })
       map("n", "<leader>gD", ":Gvdiffsplit develop<CR>", { desc = "Git diff with develop branch" })
       map("n", "<leader>gM", ":Gvdiffsplit main<CR>", { desc = "Git diff with main branch" })
+      map("n", "<leader>gp", ":G pull<CR>", { desc = "Git pull" })
+      map("n", "<leader>gP", ":G pull --rebase<CR>", { desc = "Git pull --rebase" })
     end,
   },
 

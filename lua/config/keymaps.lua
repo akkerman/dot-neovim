@@ -1,5 +1,6 @@
 local options = require("utils").options
 local nmap = require("utils").nmap
+local get_git_root_or_cwd = require("utils").get_git_root_or_cwd
 local map = vim.keymap.set
 
 map("n", "<leader>n", ":set hlsearch!<CR>", { desc = "Toggle search highlight" })
@@ -52,6 +53,15 @@ map("n", "<leader>fcp", function()
   -- Show notification with the file name
   vim.notify(vim.fn.expand("%:p"), vim.log.levels.INFO, { title = "Copied file path to clipboard" })
 end, { desc = "Copy file path to clipboard" })
+
+map("n", "<leader>fcg", function()
+  -- Copy git-relative file path to clipboard
+  local git_root = get_git_root_or_cwd()
+  local abs_path = vim.fn.expand("%:p")
+  local rel_path = abs_path:sub(#git_root + 2)
+  vim.fn.setreg('+', rel_path)
+  vim.notify(rel_path, vim.log.levels.INFO, { title = "Copied git-relative file path to clipboard" })
+end, { desc = "Copy git-relative file path to clipboard" })
 
 -- Format JSON
 map("n", "<leader>ffj", function()
