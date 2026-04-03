@@ -126,28 +126,24 @@ return {
         on_attach = on_attach,
       })
 
+      -- golang
+      -- go install golang.org/x/tools/gopls@latest
+      vim.lsp.config("gopls", {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+              shadow = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+          },
+        },
+      })
 
-      -- -- golang
-      -- -- go install golang.org/x/tools/gopls@latest
-      -- vim.api.nvim_create_autocmd("FileType", {
-      --   pattern = "go",
-      --   callback = function()
-      --     vim.lsp.start(vim.lsp.config('gopls', {
-      --       capabilities = capabilities,
-      --       on_attach = on_attach,
-      --       settings = {
-      --         gopls = {
-      --           analyses = {
-      --             unusedparams = true,
-      --             shadow = true,
-      --           },
-      --           staticcheck = true,
-      --           gofumpt = true, -- gebruik 'gofumpt' voor striktere formattering
-      --         },
-      --       },
-      --     }))
-      --   end,
-      -- })
+      vim.lsp.enable({ "ts_ls", "eslint", "pyright", "terraformls", "yamlls", "lua_ls", "hls", "gopls" })
     end, -- end of lsp config
   },
 }
