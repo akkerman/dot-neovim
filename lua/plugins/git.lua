@@ -5,8 +5,19 @@ return {
     "tpope/vim-fugitive",
     event = "VeryLazy",
     config = function()
+      local function toggle_git_log()
+        for _, win in ipairs(vim.api.nvim_list_wins()) do
+          if vim.bo[vim.api.nvim_win_get_buf(win)].buftype == "quickfix" then
+            vim.cmd("cclose")
+            return
+          end
+        end
+        vim.cmd("Gclog!")
+      end
+
       map("n", "<leader>gs", ":Git<CR>", { desc = "Git status" })
       map("n", "<leader>gg", ":Git<CR>", { desc = "Git status" })
+      map("n", "<leader>gl", toggle_git_log, { desc = "Toggle git log" })
       map("n", "<leader>gF", ":Git fetch<CR>", { desc = "Git fetch" })
       map("n", "<leader>gbb", ":Git blame<CR>", { desc = "Git blame" })
       map("n", "<leader>gS", ":Gwrite<CR>", { desc = "Git stage this file" })
