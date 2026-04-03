@@ -10,7 +10,9 @@ return {
       map("n", "<leader>/", builtin.live_grep, { desc = "Find in files" })
 
       map("n", "<space><space>", builtin.find_files, { desc = "Find files" })
-      map("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
+      map("n", "<leader>ffa", function ()
+        builtin.find_files({ hidden = true, no_ignore = true })
+      end, { desc = "Find all files" })
       map("n", "<leader>fr", builtin.oldfiles, { desc = "Recent files" })
 
       map("n", "<leader>bb", builtin.buffers, { desc = "Switch buffer" })
