@@ -23,6 +23,7 @@ return {
         bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover information")
         bufmap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename symbol")
         bufmap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action")
+        bufmap("v", "<leader>cf", "<cmd>lua vim.lsp.buf.code_action({ context = { only = { 'refactor.extract' } } })<CR>", "Extract function")
       end
 
       vim.diagnostic.config({
