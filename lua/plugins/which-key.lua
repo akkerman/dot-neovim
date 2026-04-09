@@ -41,6 +41,7 @@ return { -- shows pending keybinds.
 
     -- Document existing key chains
     spec = {
+      { "<leader>A", group = "+AI" },
       { "<leader>b", group = "+buffer" },
       { "<leader>c", group = "+code" },
       { "<leader>cc", group = "+coverage" },
