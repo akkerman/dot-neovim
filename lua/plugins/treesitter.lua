@@ -3,7 +3,7 @@ return {
     -- for syntax highlighting and more
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-    run = ":TSUpdate", -- Zorg ervoor dat de parser up-to-date is
+    build = ":TSUpdate", -- Zorg ervoor dat de parser up-to-date is
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
@@ -26,7 +26,7 @@ return {
         ignore_install = {},
         modules = {},
         highlight = {
-          enable = true, -- Zet syntax highlighting aan
+          enable = true,
           additional_vim_regex_highlighting = true,
         },
 

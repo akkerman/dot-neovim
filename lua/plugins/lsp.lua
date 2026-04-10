@@ -2,11 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",     -- LSP integratie met autocomplete
-      "hrsh7th/nvim-cmp",         -- Autocompletion
-      "L3MON4D3/LuaSnip",         -- Snippets
-      "saadparwaiz1/cmp_luasnip", -- Snippet integratie
-      "stevearc/dressing.nvim",   -- popup
+      "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
