@@ -1,0 +1,33 @@
+diff --git a/lua/nvim-treesitter/query_predicates.lua b/lua/nvim-treesitter/query_predicates.lua
+index 7539170d..4844aef8 100644
+--- a/lua/nvim-treesitter/query_predicates.lua
++++ b/lua/nvim-treesitter/query_predicates.lua
+@@ -18,6 +18,19 @@ local non_filetype_match_injection_language_aliases = {
+ -- compatibility shim for breaking change on nightly/0.11
+ local opts = vim.fn.has "nvim-0.10" == 1 and { force = true, all = false } or true
+ 
++-- In Neovim 0.12, match[id] returns a list of nodes instead of a single node.
++-- Unwrap to get the first node for backwards compatibility.
++local function get_node(match, id)
++  local val = match[id]
++  if not val then
++    return nil
++  end
++  if type(val) == "table" then
++    return val[1]
++  end
++  return val
++end
++
+ local function get_parser_from_markdown_info_string(injection_alias)
+   local match = vim.filetype.match { filename = "a." .. injection_alias }
+   return match or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
+@@ -134,7 +147,7 @@ end, opts)
+ ---@return boolean|nil
+ query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
+   local capture_id = pred[2]
+-  local node = match[capture_id]
++  local node = get_node(match, capture_id)
+   if not node then
+     return
+   end

@@ -3,7 +3,13 @@ return {
     -- for syntax highlighting and more
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-    build = ":TSUpdate", -- Zorg ervoor dat de parser up-to-date is
+    build = function()
+      vim.cmd("TSUpdate")
+      -- Apply local patch for Neovim 0.12 compatibility (nvim-treesitter/nvim-treesitter#8636)
+      local plugin_dir = require("lazy.core.config").options.root .. "/nvim-treesitter"
+      local patch = vim.fn.stdpath("config") .. "/patches/nvim-treesitter-neovim-0.12.patch"
+      vim.fn.system({ "git", "-C", plugin_dir, "apply", "--ignore-whitespace", patch })
+    end,
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
