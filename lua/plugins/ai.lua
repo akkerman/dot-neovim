@@ -24,8 +24,8 @@ return {
       },
     },
     keys = {
-      { "<leader>Aa", ":CodeCompanionChat Toggle<CR>", mode = { "n", "v" }, desc = "Toggle AI chat" },
-      { "<leader>Ac", ":CodeCompanionChat Add<CR>",    mode = "v",          desc = "Add selectie aan chat" },
+      { "<leader>Ac", ":CodeCompanionChat Toggle<CR>", mode = { "n", "v" }, desc = "Toggle AI chat" },
+      { "<leader>Aa", ":CodeCompanionChat Add<CR>",    mode = "v",          desc = "Add selectie aan chat" },
       { "<leader>Ai", ":CodeCompanion<CR>",            mode = { "n", "v" }, desc = "AI inline" },
     },
   },
