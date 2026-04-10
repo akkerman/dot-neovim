@@ -1,8 +1,6 @@
 return {
   {
-    -- for syntax highlighting and more
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = function()
       vim.cmd("TSUpdate")
       -- Apply local patch for Neovim 0.12 compatibility (nvim-treesitter/nvim-treesitter#8636)
@@ -11,6 +9,8 @@ return {
       vim.fn.system({ "git", "-C", plugin_dir, "apply", "--ignore-whitespace", patch })
     end,
     config = function()
+      -- nvim-treesitter used for parser management only.
+      -- Highlighting is handled by Neovim's native treesitter (see autocmd below).
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "javascript",
@@ -26,38 +26,17 @@ return {
           "yaml",
           "mermaid",
         },
-
         auto_install = true,
         sync_install = false,
         ignore_install = {},
         modules = {},
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = true,
-        },
+        highlight = { enable = false },
+      })
 
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true, -- Zorgt ervoor dat het vooruit kijkt voor betere matches
-            keymaps = {
-              -- Select textobjects
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- Voeg jumps toe aan jumplist
-            goto_next_start = {},
-            goto_next_end = {},
-            goto_previous_start = {},
-            goto_previous_end = {},
-          },
-        },
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(ev)
+          pcall(vim.treesitter.start, ev.buf)
+        end,
       })
     end,
   },
