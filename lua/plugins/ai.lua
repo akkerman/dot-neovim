@@ -3,14 +3,17 @@ return {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     opts = {
-      suggestion = { enabled = false }, -- via cmp
-      panel = { enabled = false },      -- via cmp
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-y>",
+          accept_word = "<Tab>",
+          dismiss = "<Esc>",
+        },
+      },
+      panel = { enabled = false },
     },
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "zbirenbaum/copilot.lua" },
-    opts = {},
   },
   {
     "olimorris/codecompanion.nvim",
