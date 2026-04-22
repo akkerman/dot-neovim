@@ -1,39 +1,30 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    build = function()
-      vim.cmd("TSUpdate")
-      -- Apply local patch for Neovim 0.12 compatibility (nvim-treesitter/nvim-treesitter#8636)
-      local plugin_dir = require("lazy.core.config").options.root .. "/nvim-treesitter"
-      local patch = vim.fn.stdpath("config") .. "/patches/nvim-treesitter-neovim-0.12.patch"
-      vim.fn.system({ "git", "-C", plugin_dir, "apply", "--ignore-whitespace", patch })
-    end,
+    build = ":TSUpdate",
     config = function()
-      -- nvim-treesitter used for parser management only.
-      -- Highlighting is handled by Neovim's native treesitter (see autocmd below).
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "javascript",
-          "jsdoc",
-          "json",
-          "lua",
-          "python",
-          "query",
-          "terraform",
-          "typescript",
-          "vim",
-          "vimdoc",
-          "yaml",
-          "mermaid",
-        },
-        auto_install = true,
-        sync_install = false,
-        ignore_install = {},
-        modules = {},
-        highlight = { enable = false },
+      -- nvim-treesitter v2: parser management only.
+      -- Highlighting handled by Neovim's native treesitter (see autocmd below).
+      require("nvim-treesitter.config").setup()
+
+      require("nvim-treesitter").install({
+        "javascript",
+        "jsdoc",
+        "json",
+        "lua",
+        "python",
+        "query",
+        "terraform",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "yaml",
+        "mermaid",
       })
 
+      local group = vim.api.nvim_create_augroup("TreesitterHighlight", { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
+        group = group,
         callback = function(ev)
           pcall(vim.treesitter.start, ev.buf)
         end,
