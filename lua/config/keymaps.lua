@@ -27,6 +27,7 @@ nmap("<C-w><C-t>", ":tab split<CR>", "Open current window in a new tab")
 nmap("<C-w>t", ":tab split<CR>", "Open current window in a new tab")
 nmap("<C-w>z", ":wincmd_<CR>:wincmd|<CR>", "Zoom current pane")
 nmap("<C-w>N", ":vnew<CR>", "Create a new vertical split")
+nmap("<C-w>8", "<cmd>vertical resize 80<CR>", "Resize window to 80 columns")
 
 -- close buffer without closing pane
 nmap("<leader>bd", ":bp | bd #<CR>", "Close buffer without closing pane")
