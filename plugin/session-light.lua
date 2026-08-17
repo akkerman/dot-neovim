@@ -4,7 +4,7 @@ local get_git_branch_name = require("utils").get_git_branch_name
 
 
 --- vim command to force create a session in the current directory
---- @param session_name string: The name of the session, to use in the filename
+--- @param session_name string?: The name of the session, to use in the filename
 local function create_session(session_name)
   local root = get_session_root()
   local name = session_name
@@ -102,7 +102,7 @@ end
 --- Save buffers, create default session, and quit neovim
 local function save_session_and_quit()
   save_and_clean_buffers()
-  if vim.v.this_session then
+  if vim.v.this_session ~= "" then
     vim.cmd("mksession! " .. vim.fn.fnameescape(vim.v.this_session))
   else
     vim.cmd("SessionCreate")
@@ -110,19 +110,19 @@ local function save_session_and_quit()
   vim.cmd("wqa!")
 end
 
---- overwrite existing session, or show warning if not in a session
-local function overwrite_session()
-  if vim.v.this_session then
+--- Overwrite the current session, or create a new one if none is active
+local function write_session()
+  if vim.v.this_session ~= "" then
     vim.cmd("mksession! " .. vim.fn.fnameescape(vim.v.this_session))
     vim.notify("Session overwritten: " .. vim.v.this_session)
   else
-    vim.notify("Currently not in a session", vim.log.levels.WARN)
+    create_session()
   end
 end
 
 --- reload current sessions, or show warning if not in a session
 local function reload_session()
-  if vim.v.this_session then
+  if vim.v.this_session ~= "" then
     vim.cmd("source " .. vim.fn.fnameescape(vim.v.this_session))
     vim.notify("Session reloaded: " .. vim.v.this_session)
   else
@@ -170,11 +170,10 @@ end, {})
 vim.api.nvim_create_user_command("SessionSearch", search_session, {})
 
 -- Key mappings
-nmap("<leader>sc", ":SessionCreate<CR>", "Create default session")
 nmap("<leader>sn", ":SessionCreatePrompt<CR>", "Create named session with prompt")
 nmap("<leader>ss", search_session, "Search session files")
 nmap("<leader>sf", search_session, "Search session files")
 nmap("<leader>sq", save_session_and_quit, "Save files, save current or create default session, and quit Vim")
-nmap("<leader>sw", overwrite_session, "Overwrite session")
+nmap("<leader>sw", write_session, "Write session (overwrite current or create new)")
 nmap("<leader>sr", reload_session, "Reload session")
 nmap("<leader>sb", create_or_source_branch_session, "Create or load session based on current git branch")
