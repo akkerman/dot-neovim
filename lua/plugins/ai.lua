@@ -7,9 +7,9 @@ return {
         enabled = true,
         auto_trigger = true,
         keymap = {
-          accept = "<C-y>",
-          accept_word = "<Tab>",
-          dismiss = "<Esc>",
+          accept = "<Tab>",
+          accept_word = "<C-l>",
+          dismiss = "<C-c>",
         },
       },
       panel = { enabled = false },
@@ -28,8 +28,8 @@ return {
     },
     keys = {
       { "<leader>Ac", ":CodeCompanionChat Toggle<CR>", mode = { "n", "v" }, desc = "Toggle AI chat" },
-      { "<leader>Aa", ":CodeCompanionChat Add<CR>",    mode = "v",          desc = "Add selectie aan chat" },
-      { "<leader>Ai", ":CodeCompanion<CR>",            mode = { "n", "v" }, desc = "AI inline" },
+      { "<leader>Aa", ":CodeCompanionChat Add<CR>", mode = "v", desc = "Add selectie aan chat" },
+      { "<leader>Ai", ":CodeCompanion<CR>", mode = { "n", "v" }, desc = "AI inline" },
     },
   },
 }
