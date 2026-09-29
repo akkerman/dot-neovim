@@ -60,10 +60,19 @@ return {
 
       -- coverage
       local coverage = require("coverage")
+      local coverage_report = require("coverage.report")
+      local summary_after_load = false
+
       coverage.setup({
         commands = true,
         auto_reload = true,
         min_coverage = 100,
+        load_coverage_cb = function()
+          if summary_after_load then
+            summary_after_load = false
+            coverage.summary()
+          end
+        end,
         signs = {
           covered = { text = "" },
           uncovered = { text = "" },
@@ -80,8 +89,18 @@ return {
       end, { desc = "Toggle coverage signs" })
 
       map("n", "<leader>ccS", function()
-        coverage.summary()
-      end, { desc = "Show summary" })
+        if coverage_report.is_cached() then
+          coverage.show()
+          coverage.summary()
+          return
+        end
+        summary_after_load = true
+        coverage.load(true)
+        -- clear the flag if loading silently failed (e.g. no coverage file)
+        vim.defer_fn(function()
+          summary_after_load = false
+        end, 2000)
+      end, { desc = "Show summary (loads coverage if needed)" })
 
       map("n", "]c", function()
         coverage.jump_next("uncovered")
